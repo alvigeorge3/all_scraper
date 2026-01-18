@@ -89,20 +89,19 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
                 # But for 100 pincodes * 20 categories, that's huge. 
                 # We will process them all but with checks.
                 
-                for cat_url in categories:
-                    try:
-                        logger.info(f"[{name}] Scraping {cat_url}...")
-                        products = await scraper.scrape_assortment(cat_url, pincode=pincode)
-                        
-                        if products:
-                            # Push to writer
-                            await result_queue.put(products)
-                        
-                        # Short delay between categories
-                        await scraper.human_delay(2, 4)
-                        
-                    except Exception as e:
-                        logger.error(f"[{name}] Failed category {cat_url}: {e}")
+                # 3. Parallel Category Scraping (Multi-Tab)
+                logger.info(f"[{name}] Scraping {len(categories)} categories with parallel tabs...")
+                
+                # We can batch categories if needed, but the method handles semaphore
+                # However, for 6 workers * 4 tabs = 24 concurrent tabs total. Safe.
+                products = await scraper.scrape_categories_parallel(list(categories), pincode=pincode, concurrency=4)
+                
+                if products:
+                    await result_queue.put(products)
+                    logger.info(f"[{name}] Pincode {pincode} complete. Scraped {len(products)} total items.")
+                
+                # No need for per-category loop delay anymore
+                
                 
             except Exception as e:
                 logger.error(f"[{name}] Failed processing {pincode}: {e}")

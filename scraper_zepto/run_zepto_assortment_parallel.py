@@ -78,15 +78,15 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
                 # Scrape all categories
                 for cat_url in categories:
                     try:
-                        logger.info(f"[{name}] Scraping {cat_url}...")
-                        products = await scraper.scrape_assortment(cat_url, pincode=pincode)
+                        logger.info(f"[{name}] Fast Scraping {cat_url}...")
+                        products = await scraper.scrape_assortment_fast(cat_url, pincode=pincode)
                         
                         if products:
                             # Push to writer
                             await result_queue.put(products)
                         
-                        # Short delay between categories
-                        await scraper.human_delay(2, 4)
+                        # Short delay between categories for fast mode
+                        await asyncio.sleep(0.1)
                         
                     except Exception as e:
                         logger.error(f"[{name}] Failed category {cat_url}: {e}")

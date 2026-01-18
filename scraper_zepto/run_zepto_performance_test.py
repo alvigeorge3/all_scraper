@@ -57,9 +57,11 @@ async def worker(name: str, pin_queue: asyncio.Queue, results: list):
                 
                 for cat_url in categories:
                     try:
-                        products = await scraper.scrape_assortment(cat_url, pincode=pincode)
+                        # USE FAST MODE
+                        products = await scraper.scrape_assortment_fast(cat_url, pincode=pincode)
                         item_count += len(products)
-                        await scraper.human_delay(1, 2)
+                        # Minimal delay for API internal throttling if needed, but fetch is resilient
+                        await asyncio.sleep(0.1) 
                     except Exception as e:
                         logger.error(f"[{name}] Failed category {cat_url}: {e}")
                 

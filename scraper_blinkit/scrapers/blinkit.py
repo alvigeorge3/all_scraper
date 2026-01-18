@@ -4,7 +4,7 @@ import logging
 import json
 import re
 import time
-from typing import List
+from typing import List, Dict
 from .base import BaseScraper
 from .models import ProductItem, AvailabilityResult
 from playwright.async_api import TimeoutError
@@ -27,6 +27,49 @@ class BlinkitScraper(BaseScraper):
             await route.abort()
         else:
             await route.continue_()
+
+    async def scrape_categories_parallel(self, category_urls: List[str], pincode: str, concurrency: int = 4) -> List[dict]:
+        """Scrapes multiple categories in parallel tabs within the same context."""
+        semaphore = asyncio.Semaphore(concurrency)
+        results = []
+
+        async def scrape_single_tab(url):
+            async with semaphore:
+                page = await self.context.new_page()
+                try:
+                    # Minimal wait strategy
+                    await page.goto(url, timeout=30000, wait_until='domcontentloaded')
+                    
+                    # Extract JSON directly (Reusing logic from scrape_assortment but customized for speed)
+                    try:
+                        next_data = await page.evaluate("window.__NEXT_DATA__")
+                        if next_data:
+                            # Parse directly efficiently
+                            products = self._parse_next_data(next_data, pincode) # Need to refactor extraction logic
+                            return products
+                    except Exception as e:
+                        logger.warning(f"Fast extract failed for {url}: {e}")
+                        
+                    # Fallback to slower scrape_assortment logic if needed, but better to duplicate for speed
+                    # Or attach this page to self.page temporarily? No, standard logic relies on self.page
+                    # We will just reuse the core extraction logic if we refactor it out.
+                    
+                    # For now, let's just use self.scrape_assortment BUT we need to support passing a 'page' object 
+                    # to scrape_assortment. Currently scrape_assortment uses self.page.
+                    # Plan: Refactor scrape_assortment to accept optional page argument.
+                    return []
+                except Exception as e:
+                    logger.error(f"Tab scrape failed {url}: {e}")
+                    return []
+                finally:
+                    await page.close()
+
+        # WAIT. Modifying scrape_assortment is safer.
+        # Let's first refactor scrape_assortment to take an optional page arg.
+        return []
+
+    # Placeholder - step 1 is refactoring scrape_assortment
+
 
     async def set_location(self, pincode: str):
         logger.info(f"Setting location to {pincode}")
@@ -147,12 +190,92 @@ class BlinkitScraper(BaseScraper):
             logger.error(f"Error extracting categories: {e}")
             return []
 
+
+                    
+    def _extract_products_from_next_data(self, next_data: dict) -> Dict[str, dict]:
+        """Helper to recursively find products in __NEXT_DATA__."""
+        products_map = {}
+        def find_products_recursive(data, collector):
+            if isinstance(data, dict):
+                if 'product_id' in data and ('name' in data or 'product_name' in data):
+                    pid = str(data['product_id'])
+                    if pid not in collector:
+                        collector[pid] = data
+                for k, v in data.items():
+                    find_products_recursive(v, collector)
+            elif isinstance(data, list):
+                for item in data:
+                    find_products_recursive(item, collector)
+        
+        find_products_recursive(next_data, products_map)
+        return products_map
+
+    async def scrape_categories_parallel(self, category_urls: List[str], pincode: str, concurrency: int = 4) -> List[dict]:
+        """Scrapes multiple categories in parallel tabs within the same context."""
+        semaphore = asyncio.Semaphore(concurrency)
+        all_results = []
+        
+        async def scrape_single_tab(url):
+            async with semaphore:
+                page = await self.context.new_page()
+                try:
+                    # Minimal wait strategy: Block most things, wait for DOM
+                    await page.route("**/*", self._handle_route)
+                    
+                    try:
+                        await page.goto(url, timeout=30000, wait_until='domcontentloaded')
+                    except Exception as e:
+                        logger.warning(f"Nav failed {url}: {e}")
+                        return []
+
+                    # Fast Path: JSON
+                    try:
+                        next_data = await page.evaluate("window.__NEXT_DATA__")
+                        if next_data:
+                            products_map = self._extract_products_from_next_data(next_data)
+                            items = []
+                            for pid, pdata in products_map.items():
+                                # Basic item construction (Simplified for speed)
+                                item = {
+                                    "pincode_input": pincode,
+                                    "url": url,
+                                    "category": "Assortment", # Placeholder
+                                    "name": pdata.get('name', 'N/A'),
+                                    "price": pdata.get('price', None),
+                                    "mrp": pdata.get('mrp', None),
+                                    "product_id": pid,
+                                    "availability": "In Stock" if pdata.get('inventory', 0) > 0 else "Out of Stock",
+                                    "scraped_at": time.strftime('%Y-%m-%d %H:%M:%S')
+                                }
+                                # Add other fields if available in pdata
+                                if 'merchant' in pdata:
+                                    item['merchant_id'] = pdata['merchant'].get('id')
+                                items.append(item)
+                            
+                            logger.info(f"⚡ Fast-scraped {len(items)} items from {url}")
+                            return items
+                    except Exception as e:
+                        logger.warning(f"Fast extract failed for {url}: {e}")
+                    
+                    return []
+                except Exception as e:
+                    logger.error(f"Tab scrape failed {url}: {e}")
+                    return []
+                finally:
+                    await page.close()
+
+        tasks = [scrape_single_tab(url) for url in category_urls]
+        results = await asyncio.gather(*tasks)
+        for r in results:
+            all_results.extend(r)
+            
+        return all_results
+
     async def scrape_assortment(self, category_url: str, pincode: str = "N/A") -> List[ProductItem]:
         logger.info(f"Scraping assortment from {category_url}")
         results: List[ProductItem] = []
         
         # Extract category and subcategory from URL
-        # URL format: https://blinkit.com/cn/vegetables-fruits/vegetables/cid/1487/1489
         category = "N/A"
         subcategory = "N/A"
         try:
@@ -179,29 +302,9 @@ class BlinkitScraper(BaseScraper):
             products_map = {}
             # 1. JSON Data Extraction Strategy (Primary)
             try:
-                # Try to get data directly from Next.js hydration state
                 next_data = await self.page.evaluate("window.__NEXT_DATA__")
                 if next_data:
-                    # Traverse the JSON to find products
-                    # Usually in props > pageProps > initialAppShellPrefetch > ... or similar
-                    # But simpler to just traverse recursively or JSON dump and regex search the clean object
-                    
-                    # Strategy: Serialize back to string and use multiple regex patterns or just recursive search
-                    # Efficient recursive search for dicts with 'product_id'
-                    
-                    def find_products_recursive(data, collector):
-                        if isinstance(data, dict):
-                            if 'product_id' in data and ('name' in data or 'product_name' in data):
-                                pid = str(data['product_id'])
-                                if pid not in collector:
-                                    collector[pid] = data
-                            for k, v in data.items():
-                                find_products_recursive(v, collector)
-                        elif isinstance(data, list):
-                            for item in data:
-                                find_products_recursive(item, collector)
-                                
-                    find_products_recursive(next_data, products_map)
+                    products_map = self._extract_products_from_next_data(next_data)
             except Exception as e:
                 logger.warning(f"NEXT_DATA extraction failed: {e}")
 
@@ -256,7 +359,7 @@ class BlinkitScraper(BaseScraper):
                         "name": name,
                         "brand": p.get('brand') or "Unknown",
                         "base_product_id": pid,
-                        "product_id": pid, # Explicitly requested
+                        "product_id": pid,
                         "group_id": p.get('group_id') or p.get('groupId'),
                         "merchant_type": p.get('merchant_type') or p.get('merchantType'),
                         "mrp": float(p.get('mrp', 0)),
@@ -270,7 +373,13 @@ class BlinkitScraper(BaseScraper):
                         "product_url": f"{self.base_url}prn/{name.lower().replace(' ', '-')}/prid/{pid}",
                         "image_url": p.get('image_url') or "N/A",
                         "scraped_at": timestamp,
-                        "pincode_input": pincode
+                        "pincode_input": pincode,
+                        "error": None,
+                        "manufacturer_details": None,
+                        "marketer_details": None,
+                        "variant_count": None,
+                        "variant_in_stock_count": None,
+                        "seller_details": None
                     }
                     results.append(item)
                 except Exception as e:

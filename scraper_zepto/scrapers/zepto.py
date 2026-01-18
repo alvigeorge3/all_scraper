@@ -519,3 +519,149 @@ class ZeptoScraper(BaseScraper):
             
         return products
 
+    async def fetch_category_content(self, url: str) -> str:
+        """
+        Fetches the raw content of a URL using the browser's fetch API.
+        This maintains cookies/headers but avoids page rendering overhead.
+        """
+        try:
+            content = await self.page.evaluate(f"""
+                async () => {{
+                    try {{
+                        const response = await fetch("{url}", {{
+                            headers: {{
+                                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                                'Upgrade-Insecure-Requests': '1'
+                            }}
+                        }});
+                        return await response.text();
+                    }} catch (e) {{
+                        return null;
+                    }}
+                }}
+            """)
+            return content
+        except Exception as e:
+            logger.error(f"Fast fetch failed for {url}: {e}")
+            return None
+
+    async def scrape_assortment_fast(self, category_url: str, pincode: str = "N/A") -> List[ProductItem]:
+        """
+        Scrapes a category using fast fetch (no navigation).
+        """
+        logger.info(f"Fast Scraping {category_url}")
+        products: List[ProductItem] = []
+        
+        content = await self.fetch_category_content(category_url)
+        if not content:
+            logger.warning(f"No content returned for {category_url}")
+            return []
+            
+        # Parse Category/Sub from URL if possible
+        cat_name = "Unknown"
+        sub_name = "Unknown"
+        try:
+            if "/cn/" in category_url:
+                parts = category_url.split("/cn/")[1].split("/")
+                if len(parts) >= 2:
+                    cat_name = parts[0].replace("-", " ").title()
+                    sub_name = parts[1].replace("-", " ").title()
+        except: pass
+
+        # Reuse the existing parsing logic - simplified for this context
+        # We rely on the Flight/HTML string parsing which is robust
+        
+        if isinstance(content, str):
+            product_details_map = {}
+            try:
+                id_matches = re.finditer(r'\\\"id\\\":\\\"([a-f0-9\-]+)\\\"', content)
+                for match in id_matches:
+                    pvid_key = match.group(1)
+                    start = max(0, match.start() - 1000)
+                    end = min(len(content), match.end() + 1000)
+                    window = content[start:end]
+                    
+                    details = {}
+                    qty_match = re.search(r'\\\"availableQuantity\\\":(\d+)', window)
+                    if qty_match: details['inventory'] = qty_match.group(1)
+                    
+                    sl_match = re.search(r'\\\"shelfLifeInHours\\\":\\\"([^\"]+)\\\"', window)
+                    if sl_match: details['shelf_life'] = sl_match.group(1)
+                    
+                    ps_match = re.search(r'\\\"packsize\\\":(\d+)', window)
+                    if ps_match: details['pack_size_raw'] = ps_match.group(1)
+                    
+                    if details:
+                        if pvid_key not in product_details_map: product_details_map[pvid_key] = {}
+                        product_details_map[pvid_key].update(details)
+            except: pass
+
+            link_matches = re.finditer(r'href=\"(/pn/[^\"]+)\"', content)
+            for match in link_matches:
+                try:
+                    url_part = match.group(1)
+                    if "pvid" not in url_part: continue 
+                    start_idx = match.end()
+                    snippet = content[start_idx:start_idx+800] 
+                    pvid = url_part.split("pvid/")[1] if "pvid/" in url_part else ""
+                    
+                    name_match = re.search(r'>([^<]+)</a>', snippet)
+                    product_name = "Unknown"
+                    pack_size = "N/A"
+                    brand = "Unknown"
+                    price_extracted = None # Not extracted in this fast mode unless valid snippet
+                    
+                    if name_match:
+                        raw_name = name_match.group(1).replace("<!-- -->", "").strip()
+                        product_name = re.sub(r'^\d+\.\s*', '', raw_name)
+                        
+                    if product_name != "Unknown":
+                        size_match = re.search(r'(\d+(?:\.\d+)?\s*(?:g|kg|ml|l|litres|pc|pcs|unit|bunch|pack|bunches)\b)', product_name, re.IGNORECASE)
+                        if size_match: pack_size = size_match.group(1)
+                            
+                    if "/pn/" in url_part:
+                        try:
+                            slug = url_part.split("/pn/")[1]
+                            brand = slug.split("-")[0].title()
+                        except: pass
+                    if product_name != "Unknown" and " - " in product_name:
+                        parts = product_name.split(" - ")
+                        if len(parts) > 1 and len(parts[0]) < 20: brand = parts[0]
+
+                    inventory = "N/A"
+                    shelf_life = "N/A"
+                    if pvid in product_details_map:
+                        details = product_details_map[pvid]
+                        inventory = details.get('inventory', "N/A")
+                        shelf_life = details.get('shelf_life', "N/A")
+                        if pack_size == "N/A" and 'pack_size_raw' in details: pack_size = details['pack_size_raw']
+                    
+                    price_match = re.search(r'<td>(₹\d+)</td>', snippet)
+                    price = "N/A"
+                    if price_match: price = price_match.group(1).replace('₹', '')
+                    
+                    if not any(p['base_product_id'] == url_part for p in products):
+                        item: ProductItem = {
+                            "Category": cat_name,
+                            "Subcategory": sub_name,
+                            "Item Name": product_name,
+                            "Brand": brand, 
+                            "Mrp": price, 
+                            "Price": price,
+                            "Weight/pack_size": pack_size,
+                            "Delivery ETA": self.delivery_eta,
+                            "availability": "In Stock" if inventory != "0" and inventory != "N/A" else "Out of Stock",
+                            "inventory": inventory,
+                            "store_id": self.store_id,
+                            "base_product_id": url_part,
+                            "shelf_life_in_hours": shelf_life,
+                            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                            "pincode_input": pincode,
+                            "clicked_label": sub_name
+                        }
+                        products.append(item)
+                except: pass
+        
+        logger.info(f"Fast scraped {len(products)} products from {category_url}")
+        return products
+
