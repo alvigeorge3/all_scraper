@@ -1,0 +1,47 @@
+[33mcommit cbf0e4ab111e5cafc2e11ff29fb041837f4db2e6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: shareitalike <shareitalike@gmail.com>
+Date:   Sat Jan 17 02:17:02 2026 +0530
+
+    separate modules for all three scraping
+
+[33mcommit 7486b81a83f113a912d429085020032ab28c2119[m
+Author: shareitalike <shareitalike@gmail.com>
+Date:   Sat Jan 17 01:47:44 2026 +0530
+
+    :all performance updated
+
+[33mcommit 714ab5a972c80930cfd85a4afdee52c09d14af9f[m
+Author: shareitalike <shareitalike@gmail.com>
+Date:   Fri Jan 16 14:54:12 2026 +0530
+
+    zepto performance improved
+
+[33mcommit af26fb5e7645d2ee83268128347fa58f51647ec5[m
+Author: shareitalike <shareitalike@gmail.com>
+Date:   Fri Jan 16 14:43:59 2026 +0530
+
+    supabase and streamlit integration tart
+
+[33mcommit f6a2c67de8e1606fbc08e55802cafea96d0ca41b[m
+Author: shareitalike <shareitalike@gmail.com>
+Date:   Fri Jan 16 14:32:53 2026 +0530
+
+    blinkit eta solved
+
+[33mcommit 70bb11444af3fdf3b0f8807b305bbc8154203cb6[m
+Author: shareitalike <shareitalike@gmail.com>
+Date:   Fri Jan 16 14:21:14 2026 +0530
+
+    zepto eta solved
+
+[33mcommit 9bcc676f43af516186a68119de56f296bbdb8211[m
+Author: shareitalike <shareitalike@gmail.com>
+Date:   Fri Jan 16 13:38:22 2026 +0530
+
+    instamart modified
+
+[33mcommit 5d675e8c9166c86e75a97be2ffa4c5d7118dbaf3[m
+Author: shareitalike <shareitalike@gmail.com>
+Date:   Fri Jan 16 12:25:54 2026 +0530
+
+    Initial commit

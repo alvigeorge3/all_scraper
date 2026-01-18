@@ -1,0 +1,4 @@
+category,subcategory,clicked_label,name,brand,base_product_id,product_id,group_id,merchant_type,mrp,price,weight,shelf_life_in_hours,eta,availability,inventory,store_id,product_url,image_url,scraped_at,pincode_input
+Bread,Brown Bread,Bread > Brown Bread,Whole Wheat Brown Bread,Modern,101,101,G1,Retailer,50,45,400g,72,12 mins,In Stock,20,S1,http://example.com,http://via.placeholder.com/150,2026-01-18 12:00:00,560001
+Eggs,White Eggs,Eggs > White Eggs,Farm Fresh White Eggs (6 pcs),Eggoz,102,102,G2,Retailer,60,55,6 pcs,120,12 mins,In Stock,50,S1,http://example.com,,2026-01-18 12:00:00,560001
+Butter,Salted Butter,Butter > Salted Butter,Amul Pasteurized Butter,Amul,103,103,G3,Retailer,58,56,100g,4800,12 mins,Out of Stock,0,S1,http://example.com,,2026-01-18 12:00:00,560001
