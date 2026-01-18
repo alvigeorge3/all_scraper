@@ -1,2 +1,0 @@
-platform,category,subcategory,clicked_label,name,brand,base_product_id,group_id,merchant_type,mrp,price,weight,shelf_life_in_hours,eta,availability,inventory,store_id,image_url,product_url,scraped_at,pincode_input
-zepto,Masala & Dry Fruits,Dry Fruits,Masala > Dry Fruits,Almonds,Zepto Select,123-abc,grp-123,zepto_store,500.0,450.0,500 g,720,10 mins,In Stock,50,store-001,https://hw.example.com/img.jpg,https://zepto.com/pn/almonds,2024-01-18 10:00:00,560001
