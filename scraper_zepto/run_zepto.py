@@ -10,7 +10,7 @@ async def main():
     parser.add_argument("--pincode", type=str, default="560001", help="Pincode to set")
     args = parser.parse_args()
 
-    scraper = ZeptoScraper(headless=True)
+    scraper = ZeptoScraper(headless=False)
     try:
         await scraper.start()
         await scraper.set_location(args.pincode)
