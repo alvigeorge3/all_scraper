@@ -10,7 +10,7 @@ from scrapers.blinkit import BlinkitScraper
 # Configuration
 INPUT_FILE = "pin_codes.xlsx"
 OUTPUT_FILE = f"blinkit_assortment_parallel_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-MAX_WORKERS = 4  # Scale this based on CPU/RAM
+MAX_WORKERS = 6  # Reduced from 12 to prevent MemoryError
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -24,6 +24,7 @@ logger = logging.getLogger("Parallel_Assortment_Runner")
 async def writer_task(queue: asyncio.Queue, filename: str):
     """Listens for data batches and appends to CSV."""
     file_initialized = False
+    total_count = 0
     
     while True:
         try:
@@ -33,7 +34,6 @@ async def writer_task(queue: asyncio.Queue, filename: str):
                 break
                 
             # Filter dummy status messages (dictionaries with only status)
-            # We only want real product data usually
             valid_products = [p for p in batch if 'price' in p or 'mrp' in p]
             
             if valid_products:
@@ -44,11 +44,15 @@ async def writer_task(queue: asyncio.Queue, filename: str):
                         writer.writeheader()
                         file_initialized = True
                     writer.writerows(valid_products)
-                logger.info(f"💾 Saved {len(valid_products)} products to CSV.")
+                count = len(valid_products)
+                total_count += count
+                logger.info(f"💾 Saved {count} products. Total: {total_count}")
             
             queue.task_done()
         except Exception as e:
             logger.error(f"Writer task error: {e}")
+            
+    return total_count
 
 async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queue):
     """
@@ -133,9 +137,12 @@ async def main():
         raw_pincodes = df[col].dropna().astype(str).tolist()
         pincodes = []
         for p in raw_pincodes:
-            clean_p = p.split(',')[0].strip().split('.')[0]
-            if clean_p.isdigit() and len(clean_p) == 6:
-                pincodes.append(clean_p)
+            # Handle multiple pincodes in one cell (comma separated)
+            parts = [x.strip() for x in p.split(',')]
+            for part in parts:
+                clean_p = part.split('.')[0].strip()
+                if clean_p.isdigit() and len(clean_p) == 6:
+                    pincodes.append(clean_p)
         
         pincodes = sorted(list(set(pincodes)))
         logger.info(f"Loaded {len(pincodes)} unique pincodes.")
@@ -143,6 +150,9 @@ async def main():
         logger.error(f"Failed to read input: {e}")
         return
 
+    import time
+    start_time = time.time()
+    
     # 2. Setup Queues
     pin_queue = asyncio.Queue()
     result_queue = asyncio.Queue()
@@ -168,9 +178,44 @@ async def main():
     
     # Signal writer to stop
     await result_queue.put(None)
-    await writer
+    total_products = await writer
+    
+    end_time = time.time()
+    duration_seconds = end_time - start_time
+    duration_minutes = duration_seconds / 60
     
     logger.info(f"All done! Output saved to: {OUTPUT_FILE}")
+    
+    # --- Performance Reporting ---
+    try:
+        metrics = {
+            "Metric": [
+                "Total Pincodes Processed",
+                "Total Products Scraped",
+                "Total Time (Seconds)",
+                "Total Time (Minutes)",
+                "Average Time per Pincode (s)",
+                "Scraping Speed (Products/Min)",
+                "Output File"
+            ],
+            "Value": [
+                len(pincodes),
+                total_products,
+                f"{duration_seconds:.2f}",
+                f"{duration_minutes:.2f}",
+                f"{duration_seconds / len(pincodes) if pincodes else 0:.2f}",
+                f"{total_products / duration_minutes if duration_minutes > 0 else 0:.2f}",
+                OUTPUT_FILE
+            ]
+        }
+        
+        perf_df = pd.DataFrame(metrics)
+        perf_file = f"performance_metrics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
+        perf_df.to_excel(perf_file, index=False)
+        logger.info(f"📊 Performance report saved to: {perf_file}")
+        
+    except Exception as e:
+        logger.error(f"Failed to save performance report: {e}")
 
 if __name__ == "__main__":
     asyncio.run(main())

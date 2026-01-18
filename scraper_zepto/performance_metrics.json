@@ -1,0 +1,61 @@
+{
+  "test_timestamp": "2026-01-18T21:44:20.535384",
+  "total_duration_sec": 1754.98,
+  "total_pincodes_attempted": 5,
+  "successful_pincodes": 5,
+  "total_items_scraped": 6292,
+  "average_time_per_pincode_sec": 351.0,
+  "throughput_items_per_min": 215.11,
+  "details": [
+    {
+      "pincode": "110044",
+      "worker": "W-1",
+      "duration_seconds": 71.11,
+      "items_scraped": 0,
+      "categories_found": 0,
+      "status": "Success",
+      "error": "",
+      "timestamp": "2026-01-18T21:17:33.452951"
+    },
+    {
+      "pincode": "110048",
+      "worker": "W-1",
+      "duration_seconds": 66.37,
+      "items_scraped": 0,
+      "categories_found": 0,
+      "status": "Success",
+      "error": "",
+      "timestamp": "2026-01-18T21:18:43.148305"
+    },
+    {
+      "pincode": "110001",
+      "worker": "W-2",
+      "duration_seconds": 899.01,
+      "items_scraped": 1393,
+      "categories_found": 33,
+      "status": "Success",
+      "error": "",
+      "timestamp": "2026-01-18T21:30:34.900541"
+    },
+    {
+      "pincode": "110020",
+      "worker": "W-3",
+      "duration_seconds": 1299.96,
+      "items_scraped": 2426,
+      "categories_found": 55,
+      "status": "Success",
+      "error": "",
+      "timestamp": "2026-01-18T21:37:25.867524"
+    },
+    {
+      "pincode": "110017",
+      "worker": "W-4",
+      "duration_seconds": 1636.9,
+      "items_scraped": 2473,
+      "categories_found": 55,
+      "status": "Success",
+      "error": "",
+      "timestamp": "2026-01-18T21:43:02.036624"
+    }
+  ]
+}

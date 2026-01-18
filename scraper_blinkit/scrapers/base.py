@@ -89,6 +89,12 @@ class BaseScraper(ABC):
              user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
         )
         
+        # PERFORMANCE OPTIMIZATION: Block heavy resources
+        # We block images, media, fonts, and stylesheets to speed up loading
+        await self.context.route("**/*", lambda route: route.abort() 
+            if route.request.resource_type in ["image", "media", "font", "stylesheet"] 
+            else route.continue_())
+        
         # KEY STEALTH SCRIPT: Remove navigator.webdriver property
         await self.context.add_init_script("""
             Object.defineProperty(navigator, 'webdriver', {
