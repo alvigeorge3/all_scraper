@@ -49,7 +49,7 @@ async def writer_task(queue: asyncio.Queue, filename: str):
 
 async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queue):
     logger.info(f"Worker {name} starting...")
-    scraper = BlinkitScraper(headless=True) # Headless for speed
+    scraper = BlinkitScraper(headless=False) # Headful for stability
     
     try:
         await scraper.start()
