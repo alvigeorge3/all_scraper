@@ -10,7 +10,7 @@ import pandas as pd
 from scrapers.zepto import ZeptoScraper
 
 # Configuration
-INPUT_FILE = "pin_codes.xlsx"
+INPUT_FILE = "pin_codes_40.xlsx"
 OUTPUT_FILE = f"zepto_assortment_parallel_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 PERF_FILE = f"zepto_performance_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 MAX_WORKERS = 4 

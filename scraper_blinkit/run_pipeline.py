@@ -32,7 +32,7 @@ async def main():
 
     # Step 1: Run Scraping
     logger.info("--- Step 1: Scraping Data ---")
-    output_csv = await run_scraping(input_file=input_file, max_workers=6)
+    output_csv = await run_scraping(input_file=input_file, max_workers=2)
     
     if not output_csv or not os.path.exists(output_csv):
         logger.error("Scraping failed or produced no output file. Aborting upload.")

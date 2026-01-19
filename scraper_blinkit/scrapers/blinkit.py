@@ -28,45 +28,7 @@ class BlinkitScraper(BaseScraper):
         else:
             await route.continue_()
 
-    async def scrape_categories_parallel(self, category_urls: List[str], pincode: str, concurrency: int = 4) -> List[dict]:
-        """Scrapes multiple categories in parallel tabs within the same context."""
-        semaphore = asyncio.Semaphore(concurrency)
-        results = []
-
-        async def scrape_single_tab(url):
-            async with semaphore:
-                page = await self.context.new_page()
-                try:
-                    # Minimal wait strategy
-                    await page.goto(url, timeout=30000, wait_until='domcontentloaded')
-                    
-                    # Extract JSON directly (Reusing logic from scrape_assortment but customized for speed)
-                    try:
-                        next_data = await page.evaluate("window.__NEXT_DATA__")
-                        if next_data:
-                            # Parse directly efficiently
-                            products = self._parse_next_data(next_data, pincode) # Need to refactor extraction logic
-                            return products
-                    except Exception as e:
-                        logger.warning(f"Fast extract failed for {url}: {e}")
-                        
-                    # Fallback to slower scrape_assortment logic if needed, but better to duplicate for speed
-                    # Or attach this page to self.page temporarily? No, standard logic relies on self.page
-                    # We will just reuse the core extraction logic if we refactor it out.
-                    
-                    # For now, let's just use self.scrape_assortment BUT we need to support passing a 'page' object 
-                    # to scrape_assortment. Currently scrape_assortment uses self.page.
-                    # Plan: Refactor scrape_assortment to accept optional page argument.
-                    return []
-                except Exception as e:
-                    logger.error(f"Tab scrape failed {url}: {e}")
-                    return []
-                finally:
-                    await page.close()
-
-        # WAIT. Modifying scrape_assortment is safer.
-        # Let's first refactor scrape_assortment to take an optional page arg.
-        return []
+    # Removed duplicate scrape_categories_parallel method
 
     # Placeholder - step 1 is refactoring scrape_assortment
 
@@ -76,6 +38,12 @@ class BlinkitScraper(BaseScraper):
         try:
             await self.page.goto(self.base_url, timeout=60000, wait_until='domcontentloaded')
             
+            # Check for blocking
+            content = await self.page.content()
+            if "Access Denied" in content or "403 Forbidden" in content:
+                logger.error("🛑 BLOCKED: Access Denied or 403 detected on homepage.")
+                return
+
             # Humanize: Scroll a bit to look real
             await self.human_scroll()
 
@@ -86,30 +54,54 @@ class BlinkitScraper(BaseScraper):
                 await self.human_delay()
                 
                 trigger_selector = "div[class*='LocationBar__']"
+                
+                # Check if we are already seeing the location bar
+                is_visible = False
                 try:
-                    await self.page.wait_for_selector(trigger_selector, timeout=5000)
+                     await self.page.wait_for_selector(trigger_selector, timeout=5000)
+                     is_visible = True
                 except: pass
-
-                if await self.page.is_visible("div[class*='LocationBar__']"):
+                
+                trigger_clicked = False
+                if is_visible:
                     try:
-                        await self.page.hover("div[class*='LocationBar__']") 
+                        await self.page.hover(trigger_selector) 
                         await self.human_delay(0.2, 0.5)
-                        # Force click to bypass transparent overlays
-                        await self.page.click("div[class*='LocationBar__']", force=True) 
+                        await self.page.click(trigger_selector, force=True) 
+                        trigger_clicked = True
                     except:
-                        # If hover fails, try JS click
-                        await self.page.evaluate("document.querySelector(\"div[class*='LocationBar__']\").click()")
+                        # JS click fallback
+                        # Fix: Use double quotes for the outer JS string to avoid conflict with single quotes in selector
+                        await self.page.evaluate(f'document.querySelector("{trigger_selector}").click()')
+                        trigger_clicked = True
 
-                elif await self.page.is_visible("text=Delivery in"):
-                    await self.page.click("text=Delivery in", force=True)
-                else:
-                    await self.page.click("header div[class*='Container']", force=True)
+                if not trigger_clicked:
+                    # Try text-based triggers
+                    for text_pattern in ["Delivery in", "Delivery to", "Location"]:
+                         if await self.page.is_visible(f"text={text_pattern}"):
+                             await self.page.click(f"text={text_pattern}", force=True)
+                             trigger_clicked = True
+                             break
+                    
+                    if not trigger_clicked:
+                        # Broad header click as last resort
+                        logger.warning("Precise location trigger not found, trying broad header click...")
+                        await self.page.click("header", force=True)
             except Exception as e:
-                logger.warning(f"Trigger click failed: {e}")
+                logger.warning(f"Trigger click attempt failed: {e}")
 
             # Wait for modal with smart wait
             modal_input = "input[name='search'], input[placeholder*='search']"
-            await self.page.wait_for_selector(modal_input, state="visible", timeout=15000)
+            try:
+                await self.page.wait_for_selector(modal_input, state="visible", timeout=10000)
+            except TimeoutError:
+                logger.warning("Location modal not opened. Retrying trigger...")
+                # Retry once
+                await self.page.reload(wait_until='domcontentloaded')
+                await self.human_delay()
+                await self.page.click("div[class*='LocationBar__']", force=True)
+                await self.page.wait_for_selector(modal_input, state="visible", timeout=10000)
+
             
             # 2. Type pincode naturally
             logger.info(f"Typing pincode: {pincode}")
@@ -224,7 +216,17 @@ class BlinkitScraper(BaseScraper):
                     
                     try:
                         await page.goto(url, timeout=30000, wait_until='domcontentloaded')
+                        
+                        # Check for blocking
+                        content = await page.content()
+                        if "Access Denied" in content or "403 Forbidden" in content:
+                            logger.error(f"🛑 BLOCKED: Access Denied detected on {url}")
+                             # Raise a specific error to signal upper layers to abort
+                            raise Exception("BLOCKED_BY_WAF")
+
                     except Exception as e:
+                        if "BLOCKED_BY_WAF" in str(e):
+                            raise e
                         logger.warning(f"Nav failed {url}: {e}")
                         return []
 

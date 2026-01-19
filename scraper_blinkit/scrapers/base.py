@@ -84,22 +84,49 @@ class BaseScraper(ABC):
         if not self.browser:
             raise Exception("Could not launch any browser (Chromium, Chrome, or Edge)")
 
+        # Rotate User Agents
+        user_agents = [
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/121.0.0.0 Safari/537.36'
+        ]
+        chosen_ua = random.choice(user_agents)
+        logger.info(f"Using User-Agent: {chosen_ua}")
+
         self.context = await self.browser.new_context(
              viewport={'width': 1920, 'height': 1080},
-             user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+             user_agent=chosen_ua
         )
         
         # PERFORMANCE OPTIMIZATION: Block heavy resources
-        # We block images, media, fonts, and stylesheets to speed up loading
+        # We block images, media, and fonts.
+        # CRITICAL FIX: Do NOT block 'stylesheet' - modern anti-bots check for CSS loading/rendering.
         await self.context.route("**/*", lambda route: route.abort() 
-            if route.request.resource_type in ["image", "media", "font", "stylesheet"] 
+            if route.request.resource_type in ["image", "media", "font"] 
             else route.continue_())
         
-        # KEY STEALTH SCRIPT: Remove navigator.webdriver property
+        # KEY STEALTH SCRIPT: Remove navigator.webdriver and mask other properties
         await self.context.add_init_script("""
+            // 1. Pass WebDriver test
             Object.defineProperty(navigator, 'webdriver', {
                 get: () => undefined
             });
+
+            // 2. Mock Plugins (Basic)
+            Object.defineProperty(navigator, 'plugins', {
+                get: () => [1, 2, 3, 4, 5]
+            });
+
+            // 3. Mock Languages
+            Object.defineProperty(navigator, 'languages', {
+                get: () => ['en-US', 'en']
+            });
+            
+            // 4. Broken Image Handling (Optional, but good for headless)
+            // Some checks look for broken 0x0 images in headless
+            // script skipped for simplicity, focusing on properties.
         """)
         
         self.page = await self.context.new_page()

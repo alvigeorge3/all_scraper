@@ -10,7 +10,7 @@ from scrapers.blinkit import BlinkitScraper
 # Configuration
 INPUT_FILE = "pin_codes.xlsx"
 OUTPUT_FILE = f"blinkit_assortment_parallel_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-MAX_WORKERS = 6  # Reduced from 12 to prevent MemoryError
+MAX_WORKERS = 2  # Reduced from 12 to prevent MemoryError
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -104,6 +104,10 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
                 
                 
             except Exception as e:
+                if "BLOCKED_BY_WAF" in str(e):
+                    logger.error(f"🛑 CRITICAL: Worker {name} BLOCKED by WAF. Terminating worker.")
+                    # Optionally signal global stop, for now just break this worker
+                    break
                 logger.error(f"[{name}] Failed processing {pincode}: {e}")
                 
             pin_queue.task_done()

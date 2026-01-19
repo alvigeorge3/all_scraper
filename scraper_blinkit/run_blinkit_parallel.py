@@ -9,7 +9,7 @@ from scrapers.blinkit import BlinkitScraper
 # Configuration
 INPUT_FILE = "pin_codes_100.xlsx"
 OUTPUT_FILE = f"blinkit_availability_parallel_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-MAX_WORKERS = 4  # Number of parallel browsers
+MAX_WORKERS = 2  # Reduced from 4 to avoid blocking
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -65,7 +65,7 @@ async def worker(name: str, queue: asyncio.Queue, urls: list, results: list):
             queue.task_done()
             
             # Anti-ban break between tasks for this worker
-            delay = random.uniform(5, 12)
+            delay = random.uniform(15, 30)
             await asyncio.sleep(delay)
             
             # Occasional Long Break (Coffee P break per worker)
