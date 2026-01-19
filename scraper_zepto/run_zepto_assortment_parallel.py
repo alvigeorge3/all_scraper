@@ -4,12 +4,13 @@ import logging
 import random
 import os
 import csv
+import subprocess
 from datetime import datetime
 import pandas as pd
 from scrapers.zepto import ZeptoScraper
 
 # Configuration
-INPUT_FILE = "pin_codes_40.xlsx"
+INPUT_FILE = "pin_codes.xlsx"
 OUTPUT_FILE = f"zepto_assortment_parallel_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 PERF_FILE = f"zepto_performance_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 MAX_WORKERS = 4 
@@ -223,6 +224,21 @@ async def main():
     await perf_writer
     
     logger.info(f"All done! \nData: {OUTPUT_FILE}\nPerformance: {PERF_FILE}")
+
+    # Trigger Upload
+    logger.info("🚀 Starting automatic upload to Supabase...")
+    try:
+        subprocess.run(["python", "upload_zepto_data.py", OUTPUT_FILE], check=True)
+        logger.info("✅ Upload complete. Dashboard is updated!")
+        print("\n\n" + "="*50)
+        print(" EXECUTION COMPLETE ")
+        print("="*50)
+        print(f"1. Scraped Data:   {OUTPUT_FILE}")
+        print(f"2. Performance:    {PERF_FILE}")
+        print("3. Dashboard:      Visit http://localhost:8501 and click 'Refresh Data'")
+        print("="*50 + "\n")
+    except Exception as e:
+         logger.error(f"Failed to auto-upload: {e}")
 
 if __name__ == "__main__":
     asyncio.run(main())
