@@ -39,6 +39,13 @@ async def main():
              print("FAILURE: Price is missing")
         else:
              print(f"Verified Price: {p['Price']}")
+
+        # Check Category
+        if not p['Category'] or p['Category'] == "Unknown":
+             print("FAILURE: Category is missing")
+        else:
+             print(f"Verified Category: {p['Category']}")
+             print(f"Verified Subcategory: {p['Subcategory']}")
              
     await scraper.stop()
 

@@ -553,6 +553,17 @@ class ZeptoScraper(BaseScraper):
         """
         logger.info(f"Fast Scraping: {category_url}")
         
+        # Extract Category/Sub from URL if possible
+        cat_name = "Unknown"
+        sub_name = "Unknown"
+        try:
+            if "/cn/" in category_url:
+                parts = category_url.split("/cn/")[1].split("/")
+                if len(parts) >= 2:
+                    cat_name = parts[0].replace("-", " ").title()
+                    sub_name = parts[1].replace("-", " ").title()
+        except: pass
+
         captured_products = {}
         
         # Define capture logic
@@ -646,8 +657,8 @@ class ZeptoScraper(BaseScraper):
                 
                 # Format fields
                 item: ProductItem = {
-                    "Category": "", # To be filled by caller
-                    "Subcategory": "",
+                    "Category": cat_name,
+                    "Subcategory": sub_name,
                     "Item Name": name,
                     "Brand": product_info.get('brand', "Unknown"),
                     "Mrp": mrp if mrp is not None else "N/A",
@@ -661,7 +672,7 @@ class ZeptoScraper(BaseScraper):
                     "shelf_life_in_hours": variant_info.get('shelfLifeInHours', "N/A"),
                     "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
                     "pincode_input": pincode,
-                    "clicked_label": ""
+                    "clicked_label": sub_name
                 }
                 products.append(item)
             except Exception as e:
