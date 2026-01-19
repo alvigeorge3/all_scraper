@@ -46,6 +46,12 @@ def load_data():
 
     if 'created_at' in df.columns:
         df['created_at'] = pd.to_datetime(df['created_at'])
+        try:
+            # Convert UTC to IST
+            if df['created_at'].dt.tz is None:
+                df['created_at'] = df['created_at'].dt.tz_localize('UTC')
+            df['created_at'] = df['created_at'].dt.tz_convert('Asia/Kolkata')
+        except: pass
         df['created_time_str'] = df['created_at'].dt.strftime('%d-%m-%Y %H:%M:%S')
             
     return df

@@ -1,5 +1,6 @@
 
 import asyncio
+from datetime import datetime
 import logging
 import json
 import re
@@ -545,123 +546,129 @@ class ZeptoScraper(BaseScraper):
             logger.error(f"Fast fetch failed for {url}: {e}")
             return None
 
-    async def scrape_assortment_fast(self, category_url: str, pincode: str = "N/A") -> List[ProductItem]:
+    async def scrape_assortment_fast(self, category_url: str, pincode: str = None) -> List[ProductItem]:
         """
-        Scrapes a category using fast fetch (no navigation).
+        Scrapes assortment using network interception to capture React Server Components (RSC) data.
+        This is more robust than regex on HTML, ensuring Price, Name, and Inventory are captured.
         """
-        logger.info(f"Fast Scraping {category_url}")
+        logger.info(f"Fast Scraping: {category_url}")
+        
+        captured_products = {}
+        
+        # Define capture logic
+        async def handle_response(response):
+            try:
+                ct = response.headers.get("content-type", "")
+                if "application/json" in ct or "text/x-component" in ct:
+                    text = await response.text()
+                    
+                    # Optimization: check if line likely contains product data before heavy parsing
+                    if '"cardData":' not in text:
+                        return
+
+                    # Parse RSC/JSON for products
+                    # Strategy: Split by lines (RSC) or just parse JSON
+                    lines = text.split('\n')
+                    for line in lines:
+                        if '"cardData":' in line:
+                            # Try to strip RSC prefix (ID:JSON) if present
+                            parts = line.split(':', 1)
+                            json_part = parts[1] if len(parts) > 1 else line
+                                
+                            try:
+                                data = json.loads(json_part)
+                                
+                                # Recursive search for cardData
+                                def find_cards(obj):
+                                    cards = []
+                                    if isinstance(obj, dict):
+                                        if "cardData" in obj:
+                                            cards.append(obj["cardData"])
+                                        for k, v in obj.items():
+                                            cards.extend(find_cards(v))
+                                    elif isinstance(obj, list):
+                                        for item in obj:
+                                            cards.extend(find_cards(item))
+                                    return cards
+
+                                cards = find_cards(data)
+                                for card in cards:
+                                    if "id" in card:
+                                        captured_products[card["id"]] = card
+                            except:
+                                pass
+            except:
+                pass
+
+        # Attach listener
+        self.page.on("response", handle_response)
+        
+        try:
+            # Navigate
+            # Use 'domcontentloaded' or 'networkidle' depending on speed. 
+            # networkidle is safer for RSC which streams after load.
+            await self.page.goto(category_url, timeout=45000, wait_until='networkidle')
+            
+            # Small fallback wait to ensure stream completes
+            await asyncio.sleep(2)
+            
+        except Exception as e:
+            logger.error(f"Error navigating to {category_url}: {e}")
+        finally:
+            self.page.remove_listener("response", handle_response)
+
+        # Convert captured data to ProductItem
         products: List[ProductItem] = []
         
-        content = await self.fetch_category_content(category_url)
-        if not content:
-            logger.warning(f"No content returned for {category_url}")
-            return []
-            
-        # Parse Category/Sub from URL if possible
-        cat_name = "Unknown"
-        sub_name = "Unknown"
-        try:
-            if "/cn/" in category_url:
-                parts = category_url.split("/cn/")[1].split("/")
-                if len(parts) >= 2:
-                    cat_name = parts[0].replace("-", " ").title()
-                    sub_name = parts[1].replace("-", " ").title()
-        except: pass
-
-        # Reuse the existing parsing logic - simplified for this context
-        # We rely on the Flight/HTML string parsing which is robust
-        
-        if isinstance(content, str):
-            product_details_map = {}
+        for pid, card in captured_products.items():
             try:
-                id_matches = re.finditer(r'\\\"id\\\":\\\"([a-f0-9\-]+)\\\"', content)
-                for match in id_matches:
-                    pvid_key = match.group(1)
-                    start = max(0, match.start() - 1000)
-                    end = min(len(content), match.end() + 1000)
-                    window = content[start:end]
+                # Basic Checks
+                product_info = card.get('product', {})
+                variant_info = card.get('productVariant', {})
+                
+                name = product_info.get('name')
+                if not name: continue 
                     
-                    details = {}
-                    qty_match = re.search(r'\\\"availableQuantity\\\":(\d+)', window)
-                    if qty_match: details['inventory'] = qty_match.group(1)
+                # Price (paise -> rupees)
+                price = None
+                if 'sellingPrice' in card:
+                    price = float(card['sellingPrice']) / 100.0
+                elif 'discountedSellingPrice' in card:
+                    price = float(card['discountedSellingPrice']) / 100.0
                     
-                    sl_match = re.search(r'\\\"shelfLifeInHours\\\":\\\"([^\"]+)\\\"', window)
-                    if sl_match: details['shelf_life'] = sl_match.group(1)
-                    
-                    ps_match = re.search(r'\\\"packsize\\\":(\d+)', window)
-                    if ps_match: details['pack_size_raw'] = ps_match.group(1)
-                    
-                    if details:
-                        if pvid_key not in product_details_map: product_details_map[pvid_key] = {}
-                        product_details_map[pvid_key].update(details)
-            except: pass
+                mrp = None
+                if 'mrp' in card:
+                     mrp = float(card['mrp']) / 100.0
+                elif 'mrp' in variant_info:
+                     mrp = float(variant_info['mrp']) / 100.0
+                     
+                inventory = card.get('availableQuantity')
+                
+                # Format fields
+                item: ProductItem = {
+                    "Category": "", # To be filled by caller
+                    "Subcategory": "",
+                    "Item Name": name,
+                    "Brand": product_info.get('brand', "Unknown"),
+                    "Mrp": mrp if mrp is not None else "N/A",
+                    "Price": price if price is not None else "N/A",
+                    "Weight/pack_size": variant_info.get('formattedPacksize', "N/A"),
+                    "Delivery ETA": self.delivery_eta,
+                    "availability": "In Stock" if (inventory and inventory > 0) else "Out of Stock",
+                    "inventory": inventory if inventory is not None else "0",
+                    "store_id": card.get('storeId', self.store_id),
+                    "base_product_id": pid,
+                    "shelf_life_in_hours": variant_info.get('shelfLifeInHours', "N/A"),
+                    "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                    "pincode_input": pincode,
+                    "clicked_label": ""
+                }
+                products.append(item)
+            except Exception as e:
+                 # logger.warning(f"Failed to parse product card: {e}")
+                 pass
 
-            link_matches = re.finditer(r'href=\"(/pn/[^\"]+)\"', content)
-            for match in link_matches:
-                try:
-                    url_part = match.group(1)
-                    if "pvid" not in url_part: continue 
-                    start_idx = match.end()
-                    snippet = content[start_idx:start_idx+800] 
-                    pvid = url_part.split("pvid/")[1] if "pvid/" in url_part else ""
-                    
-                    name_match = re.search(r'>([^<]+)</a>', snippet)
-                    product_name = "Unknown"
-                    pack_size = "N/A"
-                    brand = "Unknown"
-                    price_extracted = None # Not extracted in this fast mode unless valid snippet
-                    
-                    if name_match:
-                        raw_name = name_match.group(1).replace("<!-- -->", "").strip()
-                        product_name = re.sub(r'^\d+\.\s*', '', raw_name)
-                        
-                    if product_name != "Unknown":
-                        size_match = re.search(r'(\d+(?:\.\d+)?\s*(?:g|kg|ml|l|litres|pc|pcs|unit|bunch|pack|bunches)\b)', product_name, re.IGNORECASE)
-                        if size_match: pack_size = size_match.group(1)
-                            
-                    if "/pn/" in url_part:
-                        try:
-                            slug = url_part.split("/pn/")[1]
-                            brand = slug.split("-")[0].title()
-                        except: pass
-                    if product_name != "Unknown" and " - " in product_name:
-                        parts = product_name.split(" - ")
-                        if len(parts) > 1 and len(parts[0]) < 20: brand = parts[0]
-
-                    inventory = "N/A"
-                    shelf_life = "N/A"
-                    if pvid in product_details_map:
-                        details = product_details_map[pvid]
-                        inventory = details.get('inventory', "N/A")
-                        shelf_life = details.get('shelf_life', "N/A")
-                        if pack_size == "N/A" and 'pack_size_raw' in details: pack_size = details['pack_size_raw']
-                    
-                    price_match = re.search(r'<td>(₹\d+)</td>', snippet)
-                    price = "N/A"
-                    if price_match: price = price_match.group(1).replace('₹', '')
-                    
-                    if not any(p['base_product_id'] == url_part for p in products):
-                        item: ProductItem = {
-                            "Category": cat_name,
-                            "Subcategory": sub_name,
-                            "Item Name": product_name,
-                            "Brand": brand, 
-                            "Mrp": price, 
-                            "Price": price,
-                            "Weight/pack_size": pack_size,
-                            "Delivery ETA": self.delivery_eta,
-                            "availability": "In Stock" if inventory != "0" and inventory != "N/A" else "Out of Stock",
-                            "inventory": inventory,
-                            "store_id": self.store_id,
-                            "base_product_id": url_part,
-                            "shelf_life_in_hours": shelf_life,
-                            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                            "pincode_input": pincode,
-                            "clicked_label": sub_name
-                        }
-                        products.append(item)
-                except: pass
-        
         logger.info(f"Fast scraped {len(products)} products from {category_url}")
         return products
+
 

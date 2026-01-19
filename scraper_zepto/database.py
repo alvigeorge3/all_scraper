@@ -50,7 +50,7 @@ class Database:
             return []
             
         try:
-            response = self.client.table(table_name).select("*").limit(limit).execute()
+            response = self.client.table(table_name).select("*").order("created_at", desc=True).limit(limit).execute()
             return response.data
         except Exception as e:
             logger.error(f"Failed to fetch data: {e}")

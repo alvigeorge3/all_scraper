@@ -11,6 +11,7 @@ from scrapers.zepto import ZeptoScraper
 # Configuration
 INPUT_FILE = "pin_codes.xlsx"
 OUTPUT_FILE = f"zepto_assortment_parallel_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+PERF_FILE = f"zepto_performance_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 MAX_WORKERS = 4 
 
 # Configure logging
@@ -21,36 +22,64 @@ async def writer_task(queue: asyncio.Queue, filename: str):
     """Listens for data batches and appends to CSV."""
     file_initialized = False
     
-    while True:
-        try:
-            batch = await queue.get()
-            if batch is None: # Poison pill
-                queue.task_done()
-                break
+    with open(filename, 'w', newline='', encoding='utf-8') as f:
+        writer = None
+        while True:
+            try:
+                batch = await queue.get()
+                if batch is None: # Poison pill
+                    queue.task_done()
+                    break
+                    
+                # Filter valid products
+                valid_products = [p for p in batch if isinstance(p, dict) and ('Price' in p or 'Item Name' in p)]
                 
-            # Filter valid products
-            valid_products = [p for p in batch if isinstance(p, dict) and ('Price' in p or 'Item Name' in p)]
-            
-            if valid_products:
-                mode = 'a' if file_initialized else 'w'
-                with open(filename, mode, newline='', encoding='utf-8') as f:
-                    writer = csv.DictWriter(f, fieldnames=valid_products[0].keys())
+                if valid_products:
                     if not file_initialized:
+                        writer = csv.DictWriter(f, fieldnames=valid_products[0].keys())
                         writer.writeheader()
                         file_initialized = True
-                    writer.writerows(valid_products)
-                logger.info(f"💾 Saved {len(valid_products)} products to CSV.")
-            
-            queue.task_done()
-        except Exception as e:
-            logger.error(f"Writer task error: {e}")
+                    
+                    if writer:
+                        writer.writerows(valid_products)
+                        f.flush() # Ensure data is written
+                        
+                    logger.info(f"💾 Saved {len(valid_products)} products to CSV.")
+                
+                queue.task_done()
+            except Exception as e:
+                logger.error(f"Writer task error: {e}")
 
-async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queue):
+async def performance_writer_task(queue: asyncio.Queue, filename: str):
+    """Listens for performance metrics and appends to CSV."""
+    fields = ['Pincode', 'Status', 'Categories_Scraped', 'Products_Found', 'Start_Time', 'End_Time', 'Duration_Seconds', 'Error_Message']
+    
+    with open(filename, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        
+        while True:
+            try:
+                record = await queue.get()
+                if record is None: # Poison pill
+                    queue.task_done()
+                    break
+                
+                writer.writerow(record)
+                f.flush()
+                
+                logger.info(f"📊 Saved performance record for {record.get('Pincode')}")
+                queue.task_done()
+            except Exception as e:
+                logger.error(f"Performance writer task error: {e}")
+
+async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queue, perf_queue: asyncio.Queue):
     """
     Worker:
     1. Gets Pincode
     2. Scrapes *All* Categories for that pincode
     3. Pushes data to Result Queue
+    4. Pushes stats to Performance Queue
     """
     logger.info(f"Worker {name} starting...")
     scraper = ZeptoScraper(headless=True)
@@ -65,6 +94,11 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
                 break
             
             logger.info(f"[{name}] Starting Pincode: {pincode}")
+            start_time = datetime.now()
+            products_count = 0
+            categories_count = 0
+            status = "Success"
+            error_msg = ""
             
             try:
                 # 1. Set Location
@@ -73,6 +107,7 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
                 # 2. Get Categories
                 await asyncio.sleep(2)
                 categories = await scraper.get_all_categories()
+                categories_count = len(categories)
                 logger.info(f"[{name}] Found {len(categories)} categories to scrape for {pincode}")
                 
                 # Scrape all categories
@@ -82,6 +117,7 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
                         products = await scraper.scrape_assortment_fast(cat_url, pincode=pincode)
                         
                         if products:
+                            products_count += len(products)
                             # Push to writer
                             await result_queue.put(products)
                         
@@ -93,6 +129,24 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
                 
             except Exception as e:
                 logger.error(f"[{name}] Failed processing {pincode}: {e}")
+                status = "Failed"
+                error_msg = str(e)
+            
+            end_time = datetime.now()
+            duration = (end_time - start_time).total_seconds()
+            
+            # Send Performance Record
+            perf_record = {
+                'Pincode': pincode,
+                'Status': status,
+                'Categories_Scraped': categories_count,
+                'Products_Found': products_count,
+                'Start_Time': start_time.isoformat(),
+                'End_Time': end_time.isoformat(),
+                'Duration_Seconds': duration,
+                'Error_Message': error_msg
+            }
+            await perf_queue.put(perf_record)
                 
             pin_queue.task_done()
             
@@ -140,30 +194,35 @@ async def main():
     # 2. Setup Queues
     pin_queue = asyncio.Queue()
     result_queue = asyncio.Queue()
+    perf_queue = asyncio.Queue()
     
     for p in pincodes:
         pin_queue.put_nowait(p)
 
-    # 3. Launch Writer
+    # 3. Launch Writers
     writer = asyncio.create_task(writer_task(result_queue, OUTPUT_FILE))
+    perf_writer = asyncio.create_task(performance_writer_task(perf_queue, PERF_FILE))
 
     # 4. Launch Workers
     workers = []
     actual_workers = min(MAX_WORKERS, len(pincodes))
     
     for i in range(actual_workers):
-        w = asyncio.create_task(worker(f"W-{i+1}", pin_queue, result_queue))
+        w = asyncio.create_task(worker(f"W-{i+1}", pin_queue, result_queue, perf_queue))
         workers.append(w)
         await asyncio.sleep(random.uniform(2, 5))
 
     # Wait for workers
     await asyncio.gather(*workers)
     
-    # Signal writer to stop
+    # Signal writers to stop
     await result_queue.put(None)
-    await writer
+    await perf_queue.put(None)
     
-    logger.info(f"All done! Output saved to: {OUTPUT_FILE}")
+    await writer
+    await perf_writer
+    
+    logger.info(f"All done! \nData: {OUTPUT_FILE}\nPerformance: {PERF_FILE}")
 
 if __name__ == "__main__":
     asyncio.run(main())

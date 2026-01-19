@@ -1,0 +1,2529 @@
+[
+  {
+    "url": "https://bff-gateway.zepto.com/lms/api/v2/get_page?latitude=12.96902&longitude=77.75395&page_type=HOME&version=v2&show_new_eta_banner=true&page_size=1&enforce_platform_type=DESKTOP",
+    "data": {
+      "endOfPage": false,
+      "storeServiceableResponse": {
+        "isNightlyStore": false,
+        "secondaryStoreIds": [
+          "0059ff6a-7eb0-477a-a7f5-69256f2c444b"
+        ],
+        "serviceable": true,
+        "storeId": "b4dc8d65-ed2e-4142-81b6-373982b13500"
+      },
+      "pageLayout": {
+        "bottomNav": {
+          "default": "HOME",
+          "items": [
+            {
+              "activeIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/2ff6905e-f04c-41c3-8295-3df72bfff080.svg",
+              "activeIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/2ff6905e-f04c-41c3-8295-3df72bfff080.svg",
+              "deeplinkUrl": "https://shop.zeptonow.com/Home",
+              "icon": "https://ik.imagekit.io/jupdt2k6txi/app/bottom-nav/home-2.png",
+              "id": "HOME",
+              "inactiveIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/df6c8f66-c05c-407c-9ad9-7181bc9d91e3.svg",
+              "inactiveIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/df6c8f66-c05c-407c-9ad9-7181bc9d91e3.svg",
+              "label": "Home"
+            },
+            {
+              "activeIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/814b164e-5472-445b-b676-b73292c0c325.svg",
+              "activeIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/814b164e-5472-445b-b676-b73292c0c325.svg",
+              "deeplinkUrl": "https://shop.zeptonow.com/CategoryList?pageId=PAGE_IN_PAGE&title=All%20Categories&disableBackButton=true&layoutId=9277",
+              "icon": "https://ik.imagekit.io/jupdt2k6txi/app/bottom-nav/categories-2.png",
+              "id": "CATEGORIES",
+              "inactiveIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/95264952-fe88-4210-96fb-069fc3d18706.svg",
+              "inactiveIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/95264952-fe88-4210-96fb-069fc3d18706.svg",
+              "label": "Categories"
+            },
+            {
+              "activeIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/4c0c261f-70c5-4a66-b3e4-9870c0f96ded.png",
+              "activeIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/4c0c261f-70c5-4a66-b3e4-9870c0f96ded.png",
+              "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=20679&title=Buy%20Again",
+              "extraParams": "",
+              "icon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/4c0c261f-70c5-4a66-b3e4-9870c0f96ded.png",
+              "id": "Trending",
+              "inactiveIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/4c0c261f-70c5-4a66-b3e4-9870c0f96ded.png",
+              "inactiveIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/4c0c261f-70c5-4a66-b3e4-9870c0f96ded.png",
+              "label": "Trending"
+            },
+            {
+              "activeIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/15552fb2-114b-4a3c-8728-3576cf5067bb.png",
+              "activeIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/15552fb2-114b-4a3c-8728-3576cf5067bb.png",
+              "activeLottie": "",
+              "activeLottieInLoop": true,
+              "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=35185&isLMSPIPEnabled=true",
+              "extraParams": "",
+              "icon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/15552fb2-114b-4a3c-8728-3576cf5067bb.png",
+              "id": "Cafe_17_12",
+              "inactiveIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/15552fb2-114b-4a3c-8728-3576cf5067bb.png",
+              "inactiveIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/15552fb2-114b-4a3c-8728-3576cf5067bb.png",
+              "inactiveLottie": "",
+              "inactiveLottieInLoop": true,
+              "label": "Cafe",
+              "navIconType": "",
+              "thirdPartyTags": [
+                [
+                  {
+                    "Key": "script_dcm_impression",
+                    "Value": "<SCRIPT language='JavaScript1.1' SRC='https://ad.doubleclick.net/ddm/trackimpj/N1010308.5243223ZEPTONOW.COM/B32287271.399651707;dc_trk_aid=591482540;dc_trk_cid=219461988;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=;dc_tdv=1?' attributionsrc ></SCRIPT>"
+                  }
+                ]
+              ]
+            },
+            {
+              "activeIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/7648b9e5-e99d-4a34-928a-e2c1ba9aac0e.png",
+              "activeIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/7648b9e5-e99d-4a34-928a-e2c1ba9aac0e.png",
+              "activeLottie": "",
+              "activeLottieInLoop": false,
+              "deeplinkUrl": "https://www.zeptonow.com/pip/zepto-grocery-delivered-in-10-mins/34281",
+              "icon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/7648b9e5-e99d-4a34-928a-e2c1ba9aac0e.png",
+              "id": "Zepto",
+              "inactiveIcon": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/7648b9e5-e99d-4a34-928a-e2c1ba9aac0e.png",
+              "inactiveIconV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/7648b9e5-e99d-4a34-928a-e2c1ba9aac0e.png",
+              "inactiveLottie": "",
+              "inactiveLottieInLoop": false,
+              "isAdsBotd": true,
+              "label": "Zepto",
+              "navIconType": "FULL_ICON",
+              "thirdPartyTags": [
+                {
+                  "img_dcm_impression": "",
+                  "script_dcm_click": "",
+                  "script_dcm_impression": ""
+                }
+              ],
+              "uclId": "101|f9c5d7b1e08f4c6eb1bcfd222138366f|200000000|1768814942459|3041c209-9beb-43d8-b366-b16cc8eb3707|2304517_30363_2777976||CPD|1418b9a6-b299-47a8-bb32-7b26b0ebd760|1418b9a6-b299-47a8-bb32-7b26b0ebd760||2304517|2304517|b4dc8d65-ed2e-4142-81b6-373982b13500||30363|P_INFO|||||||K_INFO|||0|0"
+            }
+          ]
+        },
+        "endOfPage": false,
+        "experienceVariant": "SS_UNIFIED",
+        "header": {
+          "widget": {
+            "action": null,
+            "campaignName": "ETA",
+            "data": {
+              "etaInfo": {
+                "background": {
+                  "linearGradient": {
+                    "firstColor": "#F3EBFF",
+                    "secondColor": "#F3EBFF"
+                  }
+                },
+                "categoryConfigLoopTimeInMillisecond": 3000,
+                "categoryPrimaryText": "Delivering {categoryName} in",
+                "deliverableSubtype": "ETA_NORMAL_WITH_FULL_DELIVERY",
+                "deliverableType": "OPEN",
+                "displayText": "Delivery In",
+                "etaInMinutes": "4",
+                "etaServiceableInfo": [
+                  {
+                    "cost": 240,
+                    "deliverableSubtype": "ETA_NORMAL_WITH_FULL_DELIVERY",
+                    "etaInMinutes": 4,
+                    "isDeliverable": true,
+                    "storeId": "b4dc8d65-ed2e-4142-81b6-373982b13500"
+                  },
+                  {
+                    "cost": 10766,
+                    "deliverableSubtype": "ETA_NORMAL",
+                    "etaInMinutes": 13,
+                    "isDeliverable": true,
+                    "storeId": "0059ff6a-7eb0-477a-a7f5-69256f2c444b"
+                  }
+                ],
+                "isDeliverable": true,
+                "isScheduledDeliveryApplicable": false,
+                "secondaryBackground": {
+                  "linearGradient": {
+                    "firstColor": "#FFFFFF",
+                    "secondColor": "#FFFFFF"
+                  }
+                },
+                "secondaryText": "4 minutes",
+                "styles": {
+                  "addressLabelColor": "#000000",
+                  "addressTextColor": "#707685",
+                  "etaPrimaryTextColor": "#101418",
+                  "etaSecondaryTextColor": "#101418",
+                  "iconColor": "#101418",
+                  "theme": "DARK"
+                }
+              }
+            },
+            "experiments": {},
+            "order": 5,
+            "viewMeta": {
+              "background": {},
+              "border": {
+                "bottomLeftRadius": 0,
+                "bottomRightRadius": 0,
+                "color": "#FFFFFF",
+                "radius": 0,
+                "topLeftRadius": 0,
+                "topRightRadius": 0,
+                "width": 0
+              },
+              "divider": {},
+              "isDefaultHeaderWidget": true,
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "spacerHeight": 0,
+              "timer": {}
+            },
+            "widgetId": 35,
+            "widgetName": "ETA_BANNER",
+            "widgetType": "TOP_COMMS_WIDGET"
+          }
+        },
+        "isE2EAdsEnabled": false,
+        "isEmiEnabled": true,
+        "isListsEnabled": true,
+        "isMenuNavigationEnabled": false,
+        "isScheduleDeliveryEnabled": false,
+        "isYfpEnabled": true,
+        "isZeptoThreeEnabled": true,
+        "lastWidgetId": 42836,
+        "nextPageParams": {
+          "is_continuous_feed": false,
+          "last_widget_id": 42836,
+          "page_number": 1
+        },
+        "pageID": "HOME",
+        "pageMeta": {
+          "actions": {},
+          "floatingAction": {
+            "actionType": "DEEPLINK_NAVIGATION",
+            "deeplinkUrl": "https://shop.zeptonow.com/Checkout",
+            "id": "CART",
+            "isShowCartValue": false,
+            "widgetMeta": {
+              "bachatItemCount": {
+                "style": {
+                  "color": "#ffffffbf"
+                },
+                "text": "",
+                "variant": "Body_B12_Medium"
+              },
+              "bachatLeftIcon": {
+                "height": 18,
+                "hidePadding": false,
+                "id": "3376652d-d16d-4327-a916-9723ebc6c0c3",
+                "lottiePath": null,
+                "mediaType": "IMAGE",
+                "name": "cart-icon.svg",
+                "path": "app/svg/d5658371-64a9-413e-a870-ac358b88f10a.svg",
+                "relativePath": null,
+                "videoPath": "",
+                "width": 18
+              },
+              "bachatTitle": {
+                "style": {
+                  "color": "#FFFFFF"
+                },
+                "text": "Cart",
+                "variant": "Body_B14_Bold"
+              },
+              "bgColor": {
+                "BACHAT": "#F9105E",
+                "SUPER_SAVER": "#067031",
+                "ZEPTO_NOW": "#F9105E"
+              },
+              "cartBgColor": {
+                "SUPER_SAVER": "#1A7B41",
+                "ZEPTO_NOW": "#DB0E53"
+              },
+              "itemCount": {
+                "style": {
+                  "color": "#FFFFFF"
+                },
+                "text": "",
+                "variant": "body4"
+              },
+              "leftIcon": {
+                "height": 36,
+                "hidePadding": false,
+                "id": "3376652d-d16d-4327-a916-9723ebc6c0c3",
+                "lottiePath": null,
+                "mediaType": "IMAGE",
+                "name": "CartIcon (1).svg",
+                "path": "inventory/banner/94822682-8804-489c-8310-c259de97a222.svg",
+                "relativePath": null,
+                "videoPath": "",
+                "width": 36
+              },
+              "price": {
+                "style": {
+                  "color": "#FFFFFF"
+                },
+                "text": "",
+                "variant": "body4"
+              },
+              "rightIcon": {
+                "height": 24,
+                "hidePadding": false,
+                "id": "fb84df67-1ee7-4fcb-a57b-0b3c480482fe",
+                "lottiePath": null,
+                "mediaType": "IMAGE",
+                "name": "chevron-right (1).svg",
+                "path": "inventory/banner/4b5b80ab-e3d0-49a1-8101-86d57ce79003.svg",
+                "relativePath": null,
+                "videoPath": "",
+                "width": 24
+              },
+              "title": {
+                "style": {
+                  "color": "#FFFFFF"
+                },
+                "text": "View Cart",
+                "variant": "cta2"
+              }
+            }
+          },
+          "onPageLoadActions": null
+        },
+        "pageReloadTime": 900000,
+        "selectedLayoutId": 20543,
+        "selectedTabId": 1325,
+        "smartBasketAvailable": true,
+        "tabs": [
+          {
+            "activeIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/a767cf6e-9113-409b-b5ab-ac0d22a7db58.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {},
+            "header": null,
+            "id": 1325,
+            "inactiveIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/96bb6a90-8919-4fee-8094-2a18409e6573.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": null,
+            "layoutId": 20543,
+            "pageType": "HOME",
+            "tabMeta": null,
+            "title": "All"
+          },
+          {
+            "activeIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/ff372990-cc4b-4673-b857-72acc6df492d.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {
+              "storeSegment": [
+                "78abe2c3-a94d-40d8-b06d-5a54997e0019"
+              ]
+            },
+            "header": {
+              "meta": {
+                "background": {
+                  "image": {
+                    "height": 100,
+                    "path": "/path/image.svg",
+                    "width": 100
+                  },
+                  "linearGradient": {
+                    "firstColor": "#E33E62",
+                    "secondColor": "#E33E62"
+                  }
+                },
+                "styles": {
+                  "addressLabelColor": "#FFFFFF",
+                  "addressTextColor": "#FFFFFF",
+                  "etaPrimaryTextColor": "#FFFFFF",
+                  "etaSecondaryTextColor": "#FFFFFF",
+                  "iconColor": "#FFFFFF",
+                  "theme": "LIGHT"
+                }
+              }
+            },
+            "id": 1327,
+            "inactiveIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/e8abccfb-64fe-4249-84d3-426eccf01e23.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": {
+              "firstColor": "#E33E62",
+              "secondColor": "#E33E62"
+            },
+            "layoutId": 35185,
+            "pageType": "PAGE_IN_PAGE",
+            "tabMeta": null,
+            "title": "Cafe"
+          },
+          {
+            "activeIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/1f04fdba-e5bd-4a5e-a1b2-0b0ee4b925da.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {
+              "storeSegment": []
+            },
+            "header": {
+              "meta": {
+                "background": {
+                  "image": {
+                    "height": 100,
+                    "path": "/path/image.svg",
+                    "width": 100
+                  },
+                  "linearGradient": {
+                    "firstColor": "#11565D",
+                    "secondColor": "#1C7A83"
+                  }
+                },
+                "styles": {
+                  "addressLabelColor": "#FFFFFF",
+                  "addressTextColor": "#FFFFFF",
+                  "etaPrimaryTextColor": "#FFFFFF",
+                  "etaSecondaryTextColor": "#FFFFFF",
+                  "iconColor": "#FFFFFF",
+                  "theme": "LIGHT"
+                }
+              }
+            },
+            "id": 1331,
+            "inactiveIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/be82f78d-d993-4838-9f4a-4c64cd387126.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": {
+              "firstColor": "#11565D",
+              "secondColor": "#1C7A83"
+            },
+            "layoutId": 13145,
+            "pageType": "PAGE_IN_PAGE",
+            "tabMeta": null,
+            "title": "Home"
+          },
+          {
+            "activeIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/18785bac-3538-46b9-9177-d02fa47ea27d.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {},
+            "header": {
+              "meta": {
+                "background": {
+                  "image": {
+                    "height": 100,
+                    "path": "/path/image.svg",
+                    "width": 100
+                  },
+                  "linearGradient": {
+                    "firstColor": "#2364E5",
+                    "secondColor": "#2364E5"
+                  }
+                },
+                "styles": {
+                  "addressLabelColor": "#FFFFFF",
+                  "addressTextColor": "#FFFFFF",
+                  "etaPrimaryTextColor": "#FFFFFF",
+                  "etaSecondaryTextColor": "#FFFFFF",
+                  "iconColor": "#FFFFFF",
+                  "theme": "LIGHT"
+                }
+              }
+            },
+            "id": 1328,
+            "inactiveIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/b6960301-bb3c-4b75-af0e-433a8ce0a6b9.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": {
+              "firstColor": "#2364E5",
+              "secondColor": "#2364E5"
+            },
+            "layoutId": 11911,
+            "pageType": "PAGE_IN_PAGE",
+            "tabMeta": null,
+            "title": "Toys"
+          },
+          {
+            "activeIcon": {
+              "color": "#344054",
+              "height": 96,
+              "path": "inventory/banner/2fcecf63-fa18-4380-8388-1ba33ceed983.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {},
+            "header": {
+              "meta": {
+                "background": {
+                  "image": {
+                    "height": 100,
+                    "path": "/path/image.svg",
+                    "width": 100
+                  },
+                  "linearGradient": {
+                    "firstColor": "#FEF5E9",
+                    "secondColor": "#FEF5E9"
+                  }
+                },
+                "styles": {
+                  "addressLabelColor": "#000000",
+                  "addressTextColor": "#000000",
+                  "etaPrimaryTextColor": "#000000",
+                  "etaSecondaryTextColor": "#000000",
+                  "iconColor": "#000000",
+                  "theme": "DARK"
+                }
+              }
+            },
+            "id": 1329,
+            "inactiveIcon": {
+              "color": "#344054",
+              "height": 96,
+              "path": "inventory/banner/8e8a58b9-f2d7-46fb-9634-930b016499fa.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": {
+              "firstColor": "#FEF5E9",
+              "secondColor": "#FEF5E9"
+            },
+            "layoutId": 18118,
+            "pageType": "PAGE_IN_PAGE",
+            "tabMeta": null,
+            "title": "Fresh"
+          },
+          {
+            "activeIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/6cf6f28a-8583-4da3-b5af-8c486f85c2df.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {
+              "storeSegment": []
+            },
+            "header": {
+              "meta": {
+                "background": {
+                  "image": {
+                    "height": 100,
+                    "path": "/path/image.svg",
+                    "width": 100
+                  },
+                  "linearGradient": {
+                    "firstColor": "#1d1d1d",
+                    "secondColor": "#1d1d1d"
+                  }
+                },
+                "styles": {
+                  "addressLabelColor": "#FFFFFF",
+                  "addressTextColor": "#FFFFFF",
+                  "etaPrimaryTextColor": "#FFFFFF",
+                  "etaSecondaryTextColor": "#FFFFFF",
+                  "iconColor": "#FFFFFF",
+                  "theme": "LIGHT"
+                }
+              }
+            },
+            "id": 1330,
+            "inactiveIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/5c9a7bea-68b1-4bad-9fab-44cc940b72ee.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": {
+              "firstColor": "#1d1d1d",
+              "secondColor": "#484848"
+            },
+            "layoutId": 14025,
+            "pageType": "PAGE_IN_PAGE",
+            "tabMeta": null,
+            "title": "Electronics"
+          },
+          {
+            "activeIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/604fdf4e-50b0-48a3-8bd0-83b18f558235.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {
+              "storeSegment": []
+            },
+            "header": {
+              "meta": {
+                "background": {
+                  "image": {
+                    "height": 100,
+                    "path": "/path/image.svg",
+                    "width": 100
+                  },
+                  "linearGradient": {
+                    "firstColor": "#393939",
+                    "secondColor": "#393939"
+                  }
+                },
+                "styles": {
+                  "addressLabelColor": "#FFFFFF",
+                  "addressTextColor": "#FFFFFF",
+                  "etaPrimaryTextColor": "#FFFFFF",
+                  "etaSecondaryTextColor": "#FFFFFF",
+                  "iconColor": "#FFFFFF",
+                  "theme": "LIGHT"
+                }
+              }
+            },
+            "id": 1746,
+            "inactiveIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/c882779f-738d-46f8-8656-8ebb72246b46.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": {
+              "firstColor": "#393939",
+              "secondColor": "#393939"
+            },
+            "layoutId": 20745,
+            "pageType": "PAGE_IN_PAGE",
+            "tabMeta": null,
+            "title": "Mobiles"
+          },
+          {
+            "activeIcon": {
+              "color": "#F3F5F7",
+              "height": 96,
+              "path": "inventory/banner/fa6f0806-d6c5-4892-911b-6e08a736aea5.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {
+              "storeSegment": []
+            },
+            "header": {
+              "meta": {
+                "background": {
+                  "image": {
+                    "height": 100,
+                    "path": "/path/image.svg",
+                    "width": 100
+                  },
+                  "linearGradient": {
+                    "firstColor": "#CA394B",
+                    "secondColor": "#CA394B"
+                  }
+                },
+                "styles": {
+                  "addressLabelColor": "#F3F5F7",
+                  "addressTextColor": "#F3F5F7",
+                  "etaPrimaryTextColor": "#F3F5F7",
+                  "etaSecondaryTextColor": "#F3F5F7",
+                  "iconColor": "#F3F5F7",
+                  "theme": "LIGHT"
+                }
+              }
+            },
+            "id": 1332,
+            "inactiveIcon": {
+              "color": "#F3F5F7",
+              "height": 96,
+              "path": "inventory/banner/fcb1b518-5047-4aee-a6c4-3677c801d2ca.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": {
+              "firstColor": "#CA394B",
+              "secondColor": "#CA394B"
+            },
+            "layoutId": 27819,
+            "pageType": "PAGE_IN_PAGE",
+            "tabMeta": null,
+            "title": "Beauty"
+          },
+          {
+            "activeIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/a7a956c8-606d-4205-8684-7986b5e5ecb2.png",
+              "width": 96
+            },
+            "activeTitleColor": "#9A16CA",
+            "barColor": "#9A16CA",
+            "eligibility": {
+              "storeSegment": []
+            },
+            "header": {
+              "meta": {
+                "background": {
+                  "image": {
+                    "height": 100,
+                    "path": "/path/image.svg",
+                    "width": 100
+                  },
+                  "linearGradient": {
+                    "firstColor": "#222222",
+                    "secondColor": "#222222"
+                  }
+                },
+                "styles": {
+                  "addressLabelColor": "#FFFFFF",
+                  "addressTextColor": "#FFFFFF",
+                  "etaPrimaryTextColor": "#FFFFFF",
+                  "etaSecondaryTextColor": "#FFFFFF",
+                  "iconColor": "#FFFFFF",
+                  "theme": "LIGHT"
+                }
+              }
+            },
+            "id": 1333,
+            "inactiveIcon": {
+              "color": "#FFFFFF",
+              "height": 96,
+              "path": "inventory/banner/331fa0bc-afda-409d-a201-acc3deedaa2d.png",
+              "width": 96
+            },
+            "inactiveTitleColor": "#586274",
+            "isUnserviceable": false,
+            "itemGradient": {
+              "firstColor": "#222222",
+              "secondColor": "#222222"
+            },
+            "layoutId": 18194,
+            "pageType": "PAGE_IN_PAGE",
+            "tabMeta": null,
+            "title": "Fashion"
+          }
+        ],
+        "widgets": [
+          {
+            "action": null,
+            "campaignName": "ALL_CAT_LIST_DESKTOP_1",
+            "data": {
+              "items": [
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=64374cfe-d06f-4a01-898e-c07c46462c36&subCategoryId=e78a8422-5f20-4e4b-9a9f-22a0e53962e3&isUnlisted=true",
+                  "enlargedImage": {
+                    "height": 452,
+                    "id": "e1f61093-0ead-4b1c-8bd7-7ad3442c5596",
+                    "mediaType": "IMAGE",
+                    "name": "Frame 11049 (1).png",
+                    "path": "inventory/category/fad86a63-828f-4381-b9e8-58b39d48ed41-Frame_11049_(1).png",
+                    "width": 664
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "b8246eab-ae5a-41dd-80c0-4f55e6e00269",
+                    "mediaType": "IMAGE",
+                    "name": "2b5f2be5-cada-4cd7-b0af-e46c0c065f71.png",
+                    "path": "cms/category/2b5f2be5-cada-4cd7-b0af-e46c0c065f71.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "b8246eab-ae5a-41dd-80c0-4f55e6e00269",
+                    "mediaType": "IMAGE",
+                    "name": "2b5f2be5-cada-4cd7-b0af-e46c0c065f71.png",
+                    "path": "cms/category/2b5f2be5-cada-4cd7-b0af-e46c0c065f71.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "64374cfe-d06f-4a01-898e-c07c46462c36",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "338b14a4-9f06-4a60-b752-669eb08d8246",
+                    "mediaType": "IMAGE",
+                    "name": "38047553-95f3-47c6-a1ff-4794e1227d3a.png",
+                    "path": "cms/category/38047553-95f3-47c6-a1ff-4794e1227d3a.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "338b14a4-9f06-4a60-b752-669eb08d8246",
+                    "mediaType": "IMAGE",
+                    "name": "38047553-95f3-47c6-a1ff-4794e1227d3a.png",
+                    "path": "cms/category/38047553-95f3-47c6-a1ff-4794e1227d3a.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": true,
+                  "isEnlargedV2": true,
+                  "merchIds": [
+                    "d2becea1-72b2-4e2a-9874-9b80437aed80"
+                  ],
+                  "name": "Fruits & Vegetables",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=4b938e02-7bde-4479-bc0a-2b54cb6bd5f5&subCategoryId=22964a2b-0439-4236-9950-0d71b532b243&isUnlisted=true",
+                  "enlargedImage": {
+                    "height": 452,
+                    "id": "463b1ab7-9618-49a6-a815-43065216cd8c",
+                    "mediaType": "IMAGE",
+                    "name": "Dairy, Bread _ Eggs Enlarged.png",
+                    "path": "inventory/IMAGE/5c1fb201-c8a1-4421-91bd-c4553527b0a7-Dairy,_Bread___Eggs_Enlarged.png",
+                    "width": 664
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "e1312f8b-5059-4dae-b331-aed657a5478c",
+                    "mediaType": "IMAGE",
+                    "name": "fa551b17-2d61-46ea-ab90-bdd0832128be.png",
+                    "path": "cms/category/fa551b17-2d61-46ea-ab90-bdd0832128be.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "e1312f8b-5059-4dae-b331-aed657a5478c",
+                    "mediaType": "IMAGE",
+                    "name": "fa551b17-2d61-46ea-ab90-bdd0832128be.png",
+                    "path": "cms/category/fa551b17-2d61-46ea-ab90-bdd0832128be.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "4b938e02-7bde-4479-bc0a-2b54cb6bd5f5",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "6e244df7-b457-45e2-9364-f4afdefe8b87",
+                    "mediaType": "IMAGE",
+                    "name": "474e6e58-1894-4378-86f1-168cc7266d1a.png",
+                    "path": "cms/category/474e6e58-1894-4378-86f1-168cc7266d1a.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "6e244df7-b457-45e2-9364-f4afdefe8b87",
+                    "mediaType": "IMAGE",
+                    "name": "474e6e58-1894-4378-86f1-168cc7266d1a.png",
+                    "path": "cms/category/474e6e58-1894-4378-86f1-168cc7266d1a.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "70588f37-9c38-4cc5-abff-9143ecc33369"
+                  ],
+                  "name": "Dairy, Bread & Eggs",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=2f7190d0-7c40-458b-b450-9a1006db3d95&subCategoryId=2b5e863c-9497-46ae-a7e9-85f6ef7380da&isUnlisted=true",
+                  "enlargedImage": {
+                    "height": 471,
+                    "id": "ad16bac5-dc2c-4b1b-b7cd-108e8ce22e61",
+                    "mediaType": "IMAGE",
+                    "name": "Atta, Rice, Oil & Dals-01.png",
+                    "path": "inventory/category/80f85556-668a-4953-975d-c9b8c7147ddf-Atta,_Rice,_Oil_&_Dals-01.png",
+                    "width": 692
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "37aebd48-6f70-456b-a124-3de35f3b2294",
+                    "mediaType": "IMAGE",
+                    "name": "2cdf0f76-9ebe-47c5-900c-8b9779e6bc0e.png",
+                    "path": "cms/category/2cdf0f76-9ebe-47c5-900c-8b9779e6bc0e.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "37aebd48-6f70-456b-a124-3de35f3b2294",
+                    "mediaType": "IMAGE",
+                    "name": "2cdf0f76-9ebe-47c5-900c-8b9779e6bc0e.png",
+                    "path": "cms/category/2cdf0f76-9ebe-47c5-900c-8b9779e6bc0e.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "2f7190d0-7c40-458b-b450-9a1006db3d95",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "cd2569ee-8464-4a3b-9eb1-f7da8013aca5",
+                    "mediaType": "IMAGE",
+                    "name": "dc4a299d-521f-4a64-8205-c5ba8e1d13e3.png",
+                    "path": "cms/category/dc4a299d-521f-4a64-8205-c5ba8e1d13e3.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "cd2569ee-8464-4a3b-9eb1-f7da8013aca5",
+                    "mediaType": "IMAGE",
+                    "name": "dc4a299d-521f-4a64-8205-c5ba8e1d13e3.png",
+                    "path": "cms/category/dc4a299d-521f-4a64-8205-c5ba8e1d13e3.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": true,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "e336c4d2-87e9-4d08-b746-a7fe8c9598d8"
+                  ],
+                  "name": "Atta, Rice, Oil & Dals",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=4654bd8a-fb30-4ee1-ab30-4bf581b6c6e3&subCategoryId=95157c69-f03e-48e5-ae2f-d947af34397f&isUnlisted=true",
+                  "highlightedText": {},
+                  "id": "4654bd8a-fb30-4ee1-ab30-4bf581b6c6e3",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "b968b10a-d178-450d-bc40-305fb26601c8",
+                    "mediaType": "IMAGE",
+                    "name": "1237afd6-40bf-4942-a266-25f23025e86c.png",
+                    "path": "cms/category/1237afd6-40bf-4942-a266-25f23025e86c.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "b968b10a-d178-450d-bc40-305fb26601c8",
+                    "mediaType": "IMAGE",
+                    "name": "1237afd6-40bf-4942-a266-25f23025e86c.png",
+                    "path": "cms/category/1237afd6-40bf-4942-a266-25f23025e86c.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "1f704130-aaa7-4245-b2b2-a4e77b7a8800"
+                  ],
+                  "name": "Meats, Fish & Eggs",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=0c2ccf87-e32c-4438-9560-8d9488fc73e0&subCategoryId=8b44cef2-1bab-407e-aadd-29254e6778fa&isUnlisted=true",
+                  "enlargedImage": {
+                    "height": 333,
+                    "id": "a0ec2ee6-8f23-4f57-903f-b21cb5f2ce42",
+                    "mediaType": "IMAGE",
+                    "name": "8673be32-537b-4f15-9743-671a06020a55.png",
+                    "path": "cms/category/8673be32-537b-4f15-9743-671a06020a55.png",
+                    "width": 486
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "038d4bde-1170-4064-af71-237ab05bd19a",
+                    "mediaType": "IMAGE",
+                    "name": "3266ecd6-236a-4168-a8e6-77d24132bffd.png",
+                    "path": "cms/category/3266ecd6-236a-4168-a8e6-77d24132bffd.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "038d4bde-1170-4064-af71-237ab05bd19a",
+                    "mediaType": "IMAGE",
+                    "name": "3266ecd6-236a-4168-a8e6-77d24132bffd.png",
+                    "path": "cms/category/3266ecd6-236a-4168-a8e6-77d24132bffd.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "0c2ccf87-e32c-4438-9560-8d9488fc73e0",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "66e0a81d-fbc4-4629-a3f3-097cc084a048",
+                    "mediaType": "IMAGE",
+                    "name": "8d4d3977-5197-49d9-9867-8a670524e48b.png",
+                    "path": "cms/category/8d4d3977-5197-49d9-9867-8a670524e48b.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "66e0a81d-fbc4-4629-a3f3-097cc084a048",
+                    "mediaType": "IMAGE",
+                    "name": "8d4d3977-5197-49d9-9867-8a670524e48b.png",
+                    "path": "cms/category/8d4d3977-5197-49d9-9867-8a670524e48b.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "45c55a0b-4c6f-4c52-8c87-08a7096c7fd5"
+                  ],
+                  "name": "Masala, Dry Fruits & More",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=f804bccc-c565-4879-b6ab-1b964bb1ed41&subCategoryId=68922181-4e0e-4a6b-9862-cf1a02ba240e&isUnlisted=true",
+                  "highlightedText": {},
+                  "id": "f804bccc-c565-4879-b6ab-1b964bb1ed41",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "0d456478-013f-4316-93cb-a85a1bc1ec87",
+                    "mediaType": "IMAGE",
+                    "name": "ab241d87-da5b-4830-b38f-1a6cd30d0d41.png",
+                    "path": "cms/category/ab241d87-da5b-4830-b38f-1a6cd30d0d41.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "0d456478-013f-4316-93cb-a85a1bc1ec87",
+                    "mediaType": "IMAGE",
+                    "name": "ab241d87-da5b-4830-b38f-1a6cd30d0d41.png",
+                    "path": "cms/category/ab241d87-da5b-4830-b38f-1a6cd30d0d41.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "765d4c72-b47f-4846-9221-9e1c8b575a9b"
+                  ],
+                  "name": "Breakfast & Sauces",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=5736ad99-f589-4d58-a24b-a12222320a37&subCategoryId=dbb39a86-256b-4664-81ed-6668418a5436&isUnlisted=true",
+                  "highlightedText": {},
+                  "id": "5736ad99-f589-4d58-a24b-a12222320a37",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "cc2ee204-8bfc-4c39-b80f-8e3c246f8aa3",
+                    "mediaType": "IMAGE",
+                    "name": "3b0ce887-3b38-4450-b7da-9da0ad8b799d.png",
+                    "path": "cms/category/3b0ce887-3b38-4450-b7da-9da0ad8b799d.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "cc2ee204-8bfc-4c39-b80f-8e3c246f8aa3",
+                    "mediaType": "IMAGE",
+                    "name": "3b0ce887-3b38-4450-b7da-9da0ad8b799d.png",
+                    "path": "cms/category/3b0ce887-3b38-4450-b7da-9da0ad8b799d.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "ccfeea43-3451-459d-ba1b-ceb3669c9c69"
+                  ],
+                  "name": "Packaged Food",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=35185",
+                  "enlargedImage": {
+                    "height": 339,
+                    "id": "8b3d6798-202d-4394-ab28-81eaec643777",
+                    "mediaType": "IMAGE",
+                    "name": "zepto-cafe-enlarged.png",
+                    "path": "inventory/IMAGE/85739b31-2087-4c07-83c5-df0bc4595f34-zepto-cafe-enlarged.png",
+                    "width": 498
+                  },
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "b593dc08-e893-4c37-aa00-b5f3e3cd75d6",
+                    "mediaType": "IMAGE",
+                    "name": "ae7a5d00-4073-40bc-b9e5-ee8fe771f59b.png",
+                    "path": "cms/category/ae7a5d00-4073-40bc-b9e5-ee8fe771f59b.png",
+                    "width": 648
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "b593dc08-e893-4c37-aa00-b5f3e3cd75d6",
+                    "mediaType": "IMAGE",
+                    "name": "ae7a5d00-4073-40bc-b9e5-ee8fe771f59b.png",
+                    "path": "cms/category/ae7a5d00-4073-40bc-b9e5-ee8fe771f59b.png",
+                    "width": 648
+                  },
+                  "highlightedText": {},
+                  "id": "dfe16918-81b1-49c3-941b-acd557f7c277",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "25cf6456-133c-41cd-ba64-aded39be0cb3",
+                    "mediaType": "IMAGE",
+                    "name": "031c2a24-d40f-4272-8c71-8a566252495e.png",
+                    "path": "cms/category/031c2a24-d40f-4272-8c71-8a566252495e.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "25cf6456-133c-41cd-ba64-aded39be0cb3",
+                    "mediaType": "IMAGE",
+                    "name": "031c2a24-d40f-4272-8c71-8a566252495e.png",
+                    "path": "cms/category/031c2a24-d40f-4272-8c71-8a566252495e.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "5a59e77b-f6a3-45f1-86d5-f95bd5be41d3"
+                  ],
+                  "name": "Zepto Cafe",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=d7e98d87-6850-4cf9-a37c-e4fa34ae302c&subCategoryId=e6763c2d-0bf3-4332-82e4-0c8df1c94cad&isUnlisted=true",
+                  "enlargedImage": {
+                    "height": 333,
+                    "id": "5c6b15dc-c511-45c9-8fc3-3233d678b962",
+                    "mediaType": "IMAGE",
+                    "name": "518543a4-a60f-43e4-83b9-c89f86af7569.png",
+                    "path": "cms/category/518543a4-a60f-43e4-83b9-c89f86af7569.png",
+                    "width": 486
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "5aaef5c7-d87f-4fad-bf42-e50fca78e637",
+                    "mediaType": "IMAGE",
+                    "name": "2d2f6384-010a-4315-a3f2-11dc4db69671.png",
+                    "path": "cms/category/2d2f6384-010a-4315-a3f2-11dc4db69671.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "5aaef5c7-d87f-4fad-bf42-e50fca78e637",
+                    "mediaType": "IMAGE",
+                    "name": "2d2f6384-010a-4315-a3f2-11dc4db69671.png",
+                    "path": "cms/category/2d2f6384-010a-4315-a3f2-11dc4db69671.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "d7e98d87-6850-4cf9-a37c-e4fa34ae302c",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "55d0bfd4-4574-44fe-9ae1-081df252a852",
+                    "mediaType": "IMAGE",
+                    "name": "f078a8dc-a9b6-41a6-9c6f-721d4892b8ee.png",
+                    "path": "cms/category/f078a8dc-a9b6-41a6-9c6f-721d4892b8ee.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "55d0bfd4-4574-44fe-9ae1-081df252a852",
+                    "mediaType": "IMAGE",
+                    "name": "f078a8dc-a9b6-41a6-9c6f-721d4892b8ee.png",
+                    "path": "cms/category/f078a8dc-a9b6-41a6-9c6f-721d4892b8ee.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "07eb7be4-db69-4bc5-9bc2-ead4a53cd1e1"
+                  ],
+                  "name": "Tea, Coffee & More",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=65ee1b69-4e24-45b9-ac84-aace3c0854d8&subCategoryId=21c1011a-c677-4007-ac20-abc1542cb89c&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "d3d5f08f-fb6a-4d49-aebe-90311bb71833",
+                    "mediaType": "IMAGE",
+                    "name": "83485317-b48f-472b-857b-f527004b1bef.png",
+                    "path": "cms/category/83485317-b48f-472b-857b-f527004b1bef.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "d3d5f08f-fb6a-4d49-aebe-90311bb71833",
+                    "mediaType": "IMAGE",
+                    "name": "83485317-b48f-472b-857b-f527004b1bef.png",
+                    "path": "cms/category/83485317-b48f-472b-857b-f527004b1bef.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "65ee1b69-4e24-45b9-ac84-aace3c0854d8",
+                  "imageWithName": {
+                    "height": 334,
+                    "id": "7798b2a7-f35c-48e7-87c6-8e166bc49477",
+                    "mediaType": "IMAGE",
+                    "name": "db346f5e-644f-426a-85af-92d707e086ac.png",
+                    "path": "cms/category/db346f5e-644f-426a-85af-92d707e086ac.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 334,
+                    "id": "7798b2a7-f35c-48e7-87c6-8e166bc49477",
+                    "mediaType": "IMAGE",
+                    "name": "db346f5e-644f-426a-85af-92d707e086ac.png",
+                    "path": "cms/category/db346f5e-644f-426a-85af-92d707e086ac.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "0c6827ac-36bc-40b3-bd34-d53531aab3ba"
+                  ],
+                  "name": "Ice Creams & More",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=aae1447d-1403-4a5c-a65f-bcb3afb93b5e&subCategoryId=98beb18c-0205-4267-9a30-7a749bec1b63&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "d0a49b9d-2af2-4f60-a178-935a88cf14eb",
+                    "mediaType": "IMAGE",
+                    "name": "9ad444fa-488f-4040-a098-db880233210f.png",
+                    "path": "cms/category/9ad444fa-488f-4040-a098-db880233210f.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "d0a49b9d-2af2-4f60-a178-935a88cf14eb",
+                    "mediaType": "IMAGE",
+                    "name": "9ad444fa-488f-4040-a098-db880233210f.png",
+                    "path": "cms/category/9ad444fa-488f-4040-a098-db880233210f.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "aae1447d-1403-4a5c-a65f-bcb3afb93b5e",
+                  "imageWithName": {
+                    "height": 334,
+                    "id": "cc968031-af14-4fe3-a9cc-79bf1643c50d",
+                    "mediaType": "IMAGE",
+                    "name": "366e5b7d-2028-4935-b9f1-75bfa085c3d7.png",
+                    "path": "cms/category/366e5b7d-2028-4935-b9f1-75bfa085c3d7.png",
+                    "width": 226
+                  },
+                  "imageWithNameV2": {
+                    "height": 334,
+                    "id": "cc968031-af14-4fe3-a9cc-79bf1643c50d",
+                    "mediaType": "IMAGE",
+                    "name": "366e5b7d-2028-4935-b9f1-75bfa085c3d7.png",
+                    "path": "cms/category/366e5b7d-2028-4935-b9f1-75bfa085c3d7.png",
+                    "width": 226
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "ab0f3ac4-ef93-4c00-aa3e-1dce4e0a88be"
+                  ],
+                  "name": "Frozen Food",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=adab2f81-7140-4fe9-b8cf-3d809f40e38a&subCategoryId=ca984d2d-70b8-464c-b182-41aa328b3d4b&isUnlisted=true",
+                  "enlargedImage": {
+                    "height": 333,
+                    "id": "e2729b6f-ffbf-4e5a-9625-6a49ed4db61c",
+                    "mediaType": "IMAGE",
+                    "name": "3dd82a10-3905-43ce-96e1-7fc73663bd07.png",
+                    "path": "cms/category/3dd82a10-3905-43ce-96e1-7fc73663bd07.png",
+                    "width": 486
+                  },
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "86e52fc6-be4c-4f5d-8e51-77be6abbf797",
+                    "mediaType": "IMAGE",
+                    "name": "812a0bdf-97e0-49aa-ae5f-85425cabb2c0.png",
+                    "path": "cms/category/812a0bdf-97e0-49aa-ae5f-85425cabb2c0.png",
+                    "width": 648
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "86e52fc6-be4c-4f5d-8e51-77be6abbf797",
+                    "mediaType": "IMAGE",
+                    "name": "812a0bdf-97e0-49aa-ae5f-85425cabb2c0.png",
+                    "path": "cms/category/812a0bdf-97e0-49aa-ae5f-85425cabb2c0.png",
+                    "width": 648
+                  },
+                  "highlightedText": {},
+                  "id": "adab2f81-7140-4fe9-b8cf-3d809f40e38a",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "e813ca3a-9714-4e86-9f8d-dc26f8bd78b4",
+                    "mediaType": "IMAGE",
+                    "name": "ec7b14c6-2640-4165-b3ae-68c09a249ae0.png",
+                    "path": "cms/category/ec7b14c6-2640-4165-b3ae-68c09a249ae0.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "e813ca3a-9714-4e86-9f8d-dc26f8bd78b4",
+                    "mediaType": "IMAGE",
+                    "name": "ec7b14c6-2640-4165-b3ae-68c09a249ae0.png",
+                    "path": "cms/category/ec7b14c6-2640-4165-b3ae-68c09a249ae0.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "9f01abd6-6109-4ffb-976b-4ef9ad6ccc5a"
+                  ],
+                  "name": "Sweet Cravings",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=947a72ae-b371-45cb-ad3a-778c05b64399&subCategoryId=7dceec53-78f9-4f06-83d7-c8edd9c2f71a&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "41c9c203-f800-488f-9ec8-9b032374f085",
+                    "mediaType": "IMAGE",
+                    "name": "db6aaa16-3d00-4670-9534-1d55b88a2ed8.png",
+                    "path": "cms/category/db6aaa16-3d00-4670-9534-1d55b88a2ed8.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "41c9c203-f800-488f-9ec8-9b032374f085",
+                    "mediaType": "IMAGE",
+                    "name": "db6aaa16-3d00-4670-9534-1d55b88a2ed8.png",
+                    "path": "cms/category/db6aaa16-3d00-4670-9534-1d55b88a2ed8.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "947a72ae-b371-45cb-ad3a-778c05b64399",
+                  "imageWithName": {
+                    "height": 464,
+                    "id": "4600d9a0-3d75-450d-8ae3-912c0f0a68e9",
+                    "mediaType": "IMAGE",
+                    "name": "1ac987f2-7a44-498f-afbb-16d54bf4a35f.png",
+                    "path": "cms/category/1ac987f2-7a44-498f-afbb-16d54bf4a35f.png",
+                    "width": 304
+                  },
+                  "imageWithNameV2": {
+                    "height": 464,
+                    "id": "4600d9a0-3d75-450d-8ae3-912c0f0a68e9",
+                    "mediaType": "IMAGE",
+                    "name": "1ac987f2-7a44-498f-afbb-16d54bf4a35f.png",
+                    "path": "cms/category/1ac987f2-7a44-498f-afbb-16d54bf4a35f.png",
+                    "width": 304
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "2e6f1ef5-82e9-4974-a282-13f78485fb37"
+                  ],
+                  "name": "Cold Drinks & Juices",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=d2c2a144-43cd-43e5-b308-92628fa68596&subCategoryId=d648ea7c-18f0-4178-a202-4751811b086b&isUnlisted=true",
+                  "highlightedText": {},
+                  "id": "d2c2a144-43cd-43e5-b308-92628fa68596",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "b81d2f84-be3e-43fb-a2af-3b9e359ecf49",
+                    "mediaType": "IMAGE",
+                    "name": "90b2faee-1461-465a-a8c6-8c84716dd7dc.png",
+                    "path": "cms/category/90b2faee-1461-465a-a8c6-8c84716dd7dc.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "b81d2f84-be3e-43fb-a2af-3b9e359ecf49",
+                    "mediaType": "IMAGE",
+                    "name": "90b2faee-1461-465a-a8c6-8c84716dd7dc.png",
+                    "path": "cms/category/90b2faee-1461-465a-a8c6-8c84716dd7dc.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "b99eb705-29f5-4e18-944f-ca3783a5372a"
+                  ],
+                  "name": "Munchies",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=2552acf2-2f77-4714-adc8-e505de3985db&subCategoryId=3a10723e-ba14-4e5c-bdeb-a4dce2c1bec4&isUnlisted=true",
+                  "highlightedText": {},
+                  "id": "2552acf2-2f77-4714-adc8-e505de3985db",
+                  "imageWithName": {
+                    "height": 334,
+                    "id": "e0286f20-3a8d-4ce9-84d3-807e6c2cfdf4",
+                    "mediaType": "IMAGE",
+                    "name": "9b88fff5-73f5-46fd-999f-1622db4203d7.png",
+                    "path": "cms/category/9b88fff5-73f5-46fd-999f-1622db4203d7.png",
+                    "width": 226
+                  },
+                  "imageWithNameV2": {
+                    "height": 334,
+                    "id": "e0286f20-3a8d-4ce9-84d3-807e6c2cfdf4",
+                    "mediaType": "IMAGE",
+                    "name": "9b88fff5-73f5-46fd-999f-1622db4203d7.png",
+                    "path": "cms/category/9b88fff5-73f5-46fd-999f-1622db4203d7.png",
+                    "width": 226
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "eed220cb-704c-4e4f-942a-58c5582d1344"
+                  ],
+                  "name": "Biscuits",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=23798&isLMSPIPEnabled=true",
+                  "enlargedImage": {
+                    "height": 400,
+                    "id": "7bde03d1-127e-4934-8cce-03bbdfd120b8",
+                    "mediaType": "IMAGE",
+                    "name": "8fe2a25a-c02f-4018-bbc4-bfdee70b7282.png",
+                    "path": "cms/category/8fe2a25a-c02f-4018-bbc4-bfdee70b7282.png",
+                    "width": 640
+                  },
+                  "enlargedImageV2": {
+                    "height": 400,
+                    "id": "ef21594f-106b-470a-a67a-cef6875e8ea1",
+                    "mediaType": "IMAGE",
+                    "name": "ea8601ac-0863-440d-89b4-d0ea71e8600f.png",
+                    "path": "cms/category/ea8601ac-0863-440d-89b4-d0ea71e8600f.png",
+                    "width": 640
+                  },
+                  "enlargedImageV3": {
+                    "height": 400,
+                    "id": "ef21594f-106b-470a-a67a-cef6875e8ea1",
+                    "mediaType": "IMAGE",
+                    "name": "ea8601ac-0863-440d-89b4-d0ea71e8600f.png",
+                    "path": "cms/category/ea8601ac-0863-440d-89b4-d0ea71e8600f.png",
+                    "width": 640
+                  },
+                  "highlightedText": {},
+                  "id": "f6e7553c-7720-40b2-8de3-9a6a10f285dc",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "b8ca5454-d09c-4f9f-a105-bf96280b027d",
+                    "mediaType": "IMAGE",
+                    "name": "0937caed-95d8-4e6f-a300-b0d0f57ae4b0.png",
+                    "path": "cms/category/0937caed-95d8-4e6f-a300-b0d0f57ae4b0.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "b8ca5454-d09c-4f9f-a105-bf96280b027d",
+                    "mediaType": "IMAGE",
+                    "name": "0937caed-95d8-4e6f-a300-b0d0f57ae4b0.png",
+                    "path": "cms/category/0937caed-95d8-4e6f-a300-b0d0f57ae4b0.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "80f5c44b-e4d7-438c-8920-b4e507edd188",
+                    "3d10dcba-9c66-4c52-96c6-f035a593f7ed",
+                    "153beb56-60a1-4440-a5a8-77c42124a9d9",
+                    "6341a3b4-d137-4301-bdc7-a4b09e4227e2",
+                    "3b4e3a41-d258-48f0-a292-e4725feb5765",
+                    "ac9a9005-240a-439a-8394-8bbad21cf45a",
+                    "9bdecd34-74e3-47f1-b4c9-26c33f089dd3",
+                    "837a4fde-896b-40dc-847f-aa9874ee7c9c"
+                  ],
+                  "name": "Apparel & Lifestyle",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=32366&isLMSPIPEnabled=true",
+                  "enlargedImage": {
+                    "height": 400,
+                    "id": "ee62449b-68d9-45a8-98bc-b921921a5ec9",
+                    "mediaType": "IMAGE",
+                    "name": "11e4360c-6a5b-4582-8a02-7f615d079630.png",
+                    "path": "cms/category/11e4360c-6a5b-4582-8a02-7f615d079630.png",
+                    "width": 640
+                  },
+                  "enlargedImageV2": {
+                    "height": 400,
+                    "id": "eb25fa35-dac8-4451-88f1-89ce7a5a10f7",
+                    "mediaType": "IMAGE",
+                    "name": "1a08cf08-0614-4da9-a625-60627064d228.png",
+                    "path": "cms/category/1a08cf08-0614-4da9-a625-60627064d228.png",
+                    "width": 640
+                  },
+                  "enlargedImageV3": {
+                    "height": 400,
+                    "id": "eb25fa35-dac8-4451-88f1-89ce7a5a10f7",
+                    "mediaType": "IMAGE",
+                    "name": "1a08cf08-0614-4da9-a625-60627064d228.png",
+                    "path": "cms/category/1a08cf08-0614-4da9-a625-60627064d228.png",
+                    "width": 640
+                  },
+                  "highlightedText": {},
+                  "id": "27b4b613-108e-4c77-91e6-b839d542385b",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "62ae24ef-ddaf-4a0a-b9f2-5ca088e2dfbf",
+                    "mediaType": "IMAGE",
+                    "name": "f848db71-de7c-45a7-af32-cf08d8ebf4e1.png",
+                    "path": "cms/category/f848db71-de7c-45a7-af32-cf08d8ebf4e1.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "62ae24ef-ddaf-4a0a-b9f2-5ca088e2dfbf",
+                    "mediaType": "IMAGE",
+                    "name": "f848db71-de7c-45a7-af32-cf08d8ebf4e1.png",
+                    "path": "cms/category/f848db71-de7c-45a7-af32-cf08d8ebf4e1.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "14f79d5c-1924-4157-88da-ae289b134b46"
+                  ],
+                  "name": "Jewellery",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=27819&isLMSPIPEnabled=true",
+                  "enlargedImage": {
+                    "height": 136,
+                    "id": "1c4a611b-cbc5-4194-815d-1c47769dce61",
+                    "mediaType": "IMAGE",
+                    "name": "Frame 84628.png",
+                    "path": "inventory/category/58afc683-0fd6-4ff4-8e23-7863cb11de00-Frame_84628.png",
+                    "width": 105
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "947fa84e-624c-47b1-b196-539f6b3a505b",
+                    "mediaType": "IMAGE",
+                    "name": "55a9c3a6-4960-4744-b472-0929b06e0a4a.png",
+                    "path": "cms/category/55a9c3a6-4960-4744-b472-0929b06e0a4a.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "947fa84e-624c-47b1-b196-539f6b3a505b",
+                    "mediaType": "IMAGE",
+                    "name": "55a9c3a6-4960-4744-b472-0929b06e0a4a.png",
+                    "path": "cms/category/55a9c3a6-4960-4744-b472-0929b06e0a4a.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "2e5eae34-1666-4ddc-8903-76e6547f72e4",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "77c11737-ce6a-42d9-8ad7-d5dc03beb804",
+                    "mediaType": "IMAGE",
+                    "name": "91b5ee91-38a4-4654-93db-ba948f6265ea.png",
+                    "path": "cms/category/91b5ee91-38a4-4654-93db-ba948f6265ea.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "77c11737-ce6a-42d9-8ad7-d5dc03beb804",
+                    "mediaType": "IMAGE",
+                    "name": "91b5ee91-38a4-4654-93db-ba948f6265ea.png",
+                    "path": "cms/category/91b5ee91-38a4-4654-93db-ba948f6265ea.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "f2668b6f-f402-419c-9929-39d45b8e1092"
+                  ],
+                  "name": "Makeup & Beauty",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=d6c455aa-496b-4599-8f7d-81ecee8cf5a3&subCategoryId=9e89c253-515a-49f6-b80b-6eac6e3a5e52&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "04b1b00d-a2d0-450b-b4c9-97cddc22e478",
+                    "mediaType": "IMAGE",
+                    "name": "1e4eb0b5-fbea-4200-a837-0691e08e9f62.png",
+                    "path": "cms/category/1e4eb0b5-fbea-4200-a837-0691e08e9f62.png",
+                    "width": 640
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "04b1b00d-a2d0-450b-b4c9-97cddc22e478",
+                    "mediaType": "IMAGE",
+                    "name": "1e4eb0b5-fbea-4200-a837-0691e08e9f62.png",
+                    "path": "cms/category/1e4eb0b5-fbea-4200-a837-0691e08e9f62.png",
+                    "width": 640
+                  },
+                  "highlightedText": {},
+                  "id": "d6c455aa-496b-4599-8f7d-81ecee8cf5a3",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "7b89dbde-a72d-499f-81c1-9ee5d9def1ba",
+                    "mediaType": "IMAGE",
+                    "name": "ae10877f-fbb9-41c7-be21-e74642532825.png",
+                    "path": "cms/category/ae10877f-fbb9-41c7-be21-e74642532825.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "7b89dbde-a72d-499f-81c1-9ee5d9def1ba",
+                    "mediaType": "IMAGE",
+                    "name": "ae10877f-fbb9-41c7-be21-e74642532825.png",
+                    "path": "cms/category/ae10877f-fbb9-41c7-be21-e74642532825.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "4e6c2d17-c621-4bd5-867e-47b1041610a5"
+                  ],
+                  "name": "Skincare",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=30619&isLMSPIPEnabled=true",
+                  "highlightedText": {},
+                  "id": "2e75e2ea-5cb9-4f14-8a66-f3a61addeb32",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "ee38a028-c880-4f0c-8f79-23208d84806d",
+                    "mediaType": "IMAGE",
+                    "name": "0da227bf-f9c1-4688-b26a-8ee28dcdaa8e.png",
+                    "path": "cms/category/0da227bf-f9c1-4688-b26a-8ee28dcdaa8e.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "ee38a028-c880-4f0c-8f79-23208d84806d",
+                    "mediaType": "IMAGE",
+                    "name": "0da227bf-f9c1-4688-b26a-8ee28dcdaa8e.png",
+                    "path": "cms/category/0da227bf-f9c1-4688-b26a-8ee28dcdaa8e.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "3fef0c4e-fa34-4f3f-8ca6-ba090f537a02"
+                  ],
+                  "name": "Protein & Nutrition",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=0118c4f5-750c-4929-a734-b4ef454e265b&subCategoryId=b998e39c-6948-42f2-84bb-947f07f2ceca&isUnlisted=true",
+                  "enlargedImage": {
+                    "height": 400,
+                    "id": "06ce121c-85cd-4e37-9bf0-297ca352aa9f",
+                    "mediaType": "IMAGE",
+                    "name": "13c53635-d786-49ed-bfcd-835a2ee76a67.png",
+                    "path": "cms/category/13c53635-d786-49ed-bfcd-835a2ee76a67.png",
+                    "width": 640
+                  },
+                  "enlargedImageV2": {
+                    "height": 400,
+                    "id": "d88d6cff-926f-4e56-b412-3ab42b334000",
+                    "mediaType": "IMAGE",
+                    "name": "022ec16d-c061-433a-bdfe-9c642f3f733e.png",
+                    "path": "cms/category/022ec16d-c061-433a-bdfe-9c642f3f733e.png",
+                    "width": 640
+                  },
+                  "enlargedImageV3": {
+                    "height": 400,
+                    "id": "d88d6cff-926f-4e56-b412-3ab42b334000",
+                    "mediaType": "IMAGE",
+                    "name": "022ec16d-c061-433a-bdfe-9c642f3f733e.png",
+                    "path": "cms/category/022ec16d-c061-433a-bdfe-9c642f3f733e.png",
+                    "width": 640
+                  },
+                  "highlightedText": {},
+                  "id": "0118c4f5-750c-4929-a734-b4ef454e265b",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "d9a34bae-8203-4d37-a8f8-ee190574f9aa",
+                    "mediaType": "IMAGE",
+                    "name": "99ab3c6f-c4fe-4b2a-8d9f-89ea8f550022.png",
+                    "path": "cms/category/99ab3c6f-c4fe-4b2a-8d9f-89ea8f550022.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "d9a34bae-8203-4d37-a8f8-ee190574f9aa",
+                    "mediaType": "IMAGE",
+                    "name": "99ab3c6f-c4fe-4b2a-8d9f-89ea8f550022.png",
+                    "path": "cms/category/99ab3c6f-c4fe-4b2a-8d9f-89ea8f550022.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "853a682f-aa75-4f82-b90d-982716db51d4"
+                  ],
+                  "name": "Baby Care",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=26e64367-19ad-4f80-a763-42599d4215ee&subCategoryId=e8801cfd-49d0-4388-bc29-f83258204d39&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "8bbfbd03-923a-4e1f-bc17-543aeb085b48",
+                    "mediaType": "IMAGE",
+                    "name": "75e248be-7f74-4f8e-80ea-c69f259c9487.png",
+                    "path": "cms/category/75e248be-7f74-4f8e-80ea-c69f259c9487.png",
+                    "width": 640
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "8bbfbd03-923a-4e1f-bc17-543aeb085b48",
+                    "mediaType": "IMAGE",
+                    "name": "75e248be-7f74-4f8e-80ea-c69f259c9487.png",
+                    "path": "cms/category/75e248be-7f74-4f8e-80ea-c69f259c9487.png",
+                    "width": 640
+                  },
+                  "highlightedText": {},
+                  "id": "26e64367-19ad-4f80-a763-42599d4215ee",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "d4d00577-74bc-453b-b469-4aaa4436e725",
+                    "mediaType": "IMAGE",
+                    "name": "e89563f7-f600-4e68-8c1e-c5144cb20ff3.png",
+                    "path": "cms/category/e89563f7-f600-4e68-8c1e-c5144cb20ff3.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "d4d00577-74bc-453b-b469-4aaa4436e725",
+                    "mediaType": "IMAGE",
+                    "name": "e89563f7-f600-4e68-8c1e-c5144cb20ff3.png",
+                    "path": "cms/category/e89563f7-f600-4e68-8c1e-c5144cb20ff3.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "fad05326-c553-4739-b115-206baea0e0c6"
+                  ],
+                  "name": "Bath & Body",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zepto.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=20135&isLMSPIPEnabled=true",
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "b5f92450-7c71-4226-a45a-07c51aa7a0d4",
+                    "mediaType": "IMAGE",
+                    "name": "6135923f-ff82-4b00-be7b-bb908601abd8.png",
+                    "path": "cms/category/6135923f-ff82-4b00-be7b-bb908601abd8.png",
+                    "width": 640
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "b5f92450-7c71-4226-a45a-07c51aa7a0d4",
+                    "mediaType": "IMAGE",
+                    "name": "6135923f-ff82-4b00-be7b-bb908601abd8.png",
+                    "path": "cms/category/6135923f-ff82-4b00-be7b-bb908601abd8.png",
+                    "width": 640
+                  },
+                  "highlightedText": {},
+                  "id": "513e1b9e-7f62-4063-bf57-4335521dc5de",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "f27066e3-1da8-4fea-ba1b-6a0573fc29a6",
+                    "mediaType": "IMAGE",
+                    "name": "dc521fcb-3d99-4bff-967e-ff95dcdc0742.png",
+                    "path": "cms/category/dc521fcb-3d99-4bff-967e-ff95dcdc0742.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "f27066e3-1da8-4fea-ba1b-6a0573fc29a6",
+                    "mediaType": "IMAGE",
+                    "name": "dc521fcb-3d99-4bff-967e-ff95dcdc0742.png",
+                    "path": "cms/category/dc521fcb-3d99-4bff-967e-ff95dcdc0742.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "7b8ca5cd-69ea-48a7-93cb-b23ea3dee5ff"
+                  ],
+                  "name": "Hair Care",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=875671b0-ec18-42c7-9749-c2cf165509fa&subCategoryId=a7129b9a-4466-4935-957f-f91eff2130b7&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "42cf3769-5f03-452e-b3c2-28c0bc731b88",
+                    "mediaType": "IMAGE",
+                    "name": "0ce1d50e-699d-4ae2-a77f-f5534d0d7161.png",
+                    "path": "cms/category/0ce1d50e-699d-4ae2-a77f-f5534d0d7161.png",
+                    "width": 640
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "42cf3769-5f03-452e-b3c2-28c0bc731b88",
+                    "mediaType": "IMAGE",
+                    "name": "0ce1d50e-699d-4ae2-a77f-f5534d0d7161.png",
+                    "path": "cms/category/0ce1d50e-699d-4ae2-a77f-f5534d0d7161.png",
+                    "width": 640
+                  },
+                  "highlightedText": {},
+                  "id": "875671b0-ec18-42c7-9749-c2cf165509fa",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "d0804910-7360-4e4d-aa3f-8551d12b55f9",
+                    "mediaType": "IMAGE",
+                    "name": "543ccb3a-df06-4d10-a6ab-ef0f33240667.png",
+                    "path": "cms/category/543ccb3a-df06-4d10-a6ab-ef0f33240667.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "d0804910-7360-4e4d-aa3f-8551d12b55f9",
+                    "mediaType": "IMAGE",
+                    "name": "543ccb3a-df06-4d10-a6ab-ef0f33240667.png",
+                    "path": "cms/category/543ccb3a-df06-4d10-a6ab-ef0f33240667.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "9bbc83e3-3007-48ff-9e73-fc28d346c6b6"
+                  ],
+                  "name": "Fragrances & Grooming",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zepto.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=35173&isLMSPIPEnabled=true",
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "2df744b8-8826-4bdb-9e44-ead01925669f",
+                    "mediaType": "IMAGE",
+                    "name": "6cf54040-c24c-4775-a5bd-fd9a65e46b82.png",
+                    "path": "cms/category/6cf54040-c24c-4775-a5bd-fd9a65e46b82.png",
+                    "width": 640
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "2df744b8-8826-4bdb-9e44-ead01925669f",
+                    "mediaType": "IMAGE",
+                    "name": "6cf54040-c24c-4775-a5bd-fd9a65e46b82.png",
+                    "path": "cms/category/6cf54040-c24c-4775-a5bd-fd9a65e46b82.png",
+                    "width": 640
+                  },
+                  "highlightedText": {},
+                  "id": "46853481-25d4-4126-947b-c6d96f0669f6",
+                  "imageWithName": {
+                    "height": 444,
+                    "id": "50fccd13-4691-43b4-84dd-97921a70a3cb",
+                    "mediaType": "IMAGE",
+                    "name": "8cc38a79-68a7-46bf-97e8-d0424aff0238.png",
+                    "path": "cms/category/8cc38a79-68a7-46bf-97e8-d0424aff0238.png",
+                    "width": 300
+                  },
+                  "imageWithNameV2": {
+                    "height": 444,
+                    "id": "50fccd13-4691-43b4-84dd-97921a70a3cb",
+                    "mediaType": "IMAGE",
+                    "name": "8cc38a79-68a7-46bf-97e8-d0424aff0238.png",
+                    "path": "cms/category/8cc38a79-68a7-46bf-97e8-d0424aff0238.png",
+                    "width": 300
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "e7ed42ee-1a66-4c0c-89da-4ac22befb839",
+                    "43d62dc6-509e-4ef4-9ba2-1368e2916bd6",
+                    "8fbbcf5e-9171-4035-ac87-2e1f45ab6c00",
+                    "4744ade5-59a2-48e1-a21c-d305a55d0f41"
+                  ],
+                  "name": "Pharma & Wellness",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=72066480-9851-4263-89b6-50dd7525edc1&subCategoryId=56983fec-fd04-4190-9587-20e0a6fc4642&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "448b01c7-b5e9-4cff-a352-4a57b6d97d9e",
+                    "mediaType": "IMAGE",
+                    "name": "817613b5-6534-486f-b8e3-29d2f5f57c8f.png",
+                    "path": "cms/category/817613b5-6534-486f-b8e3-29d2f5f57c8f.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "448b01c7-b5e9-4cff-a352-4a57b6d97d9e",
+                    "mediaType": "IMAGE",
+                    "name": "817613b5-6534-486f-b8e3-29d2f5f57c8f.png",
+                    "path": "cms/category/817613b5-6534-486f-b8e3-29d2f5f57c8f.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "72066480-9851-4263-89b6-50dd7525edc1",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "9cb4b7f1-1130-4361-b959-89e8cbb0940c",
+                    "mediaType": "IMAGE",
+                    "name": "2b267097-f22b-4269-be34-1ea534ced3d4.png",
+                    "path": "cms/category/2b267097-f22b-4269-be34-1ea534ced3d4.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "9cb4b7f1-1130-4361-b959-89e8cbb0940c",
+                    "mediaType": "IMAGE",
+                    "name": "2b267097-f22b-4269-be34-1ea534ced3d4.png",
+                    "path": "cms/category/2b267097-f22b-4269-be34-1ea534ced3d4.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "bd873804-7dbf-443c-8fef-992e5cf37ae6"
+                  ],
+                  "name": "Feminine Hygiene",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=5ff01c62-4d1a-4eae-b566-2fe3b345abe9&subCategoryId=1c3ad1c2-76e8-4097-b2ca-99c180d23b96&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "53e12a71-079a-42ea-b73c-21656b1a0b91",
+                    "mediaType": "IMAGE",
+                    "name": "c5fad5d7-4ce9-40a8-8d1a-13b719d2cdd5.png",
+                    "path": "cms/category/c5fad5d7-4ce9-40a8-8d1a-13b719d2cdd5.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "53e12a71-079a-42ea-b73c-21656b1a0b91",
+                    "mediaType": "IMAGE",
+                    "name": "c5fad5d7-4ce9-40a8-8d1a-13b719d2cdd5.png",
+                    "path": "cms/category/c5fad5d7-4ce9-40a8-8d1a-13b719d2cdd5.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "5ff01c62-4d1a-4eae-b566-2fe3b345abe9",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "08542bfe-c604-4a21-9dbe-43173c9fd25b",
+                    "mediaType": "IMAGE",
+                    "name": "f4371151-d6ed-42d6-9338-8f7391d03fec.png",
+                    "path": "cms/category/f4371151-d6ed-42d6-9338-8f7391d03fec.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "08542bfe-c604-4a21-9dbe-43173c9fd25b",
+                    "mediaType": "IMAGE",
+                    "name": "f4371151-d6ed-42d6-9338-8f7391d03fec.png",
+                    "path": "cms/category/f4371151-d6ed-42d6-9338-8f7391d03fec.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "ed8f9c45-38df-446b-9c2e-4fd340200b86"
+                  ],
+                  "name": "Sexual Wellness",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=13145&isLMSPIPEnabled=true",
+                  "enlargedImage": {
+                    "height": 312,
+                    "id": "1a667ad5-cc94-486b-8d5b-e587584f8c82",
+                    "mediaType": "IMAGE",
+                    "name": "Home Needs_New UI.png",
+                    "path": "inventory/category/5ff3720b-4a4e-4b93-bad7-69d99160c8cc-Home_Needs_New_UI.png",
+                    "width": 312
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "9894534f-e235-4390-817d-680520c515a8",
+                    "mediaType": "IMAGE",
+                    "name": "aadd7e7e-ee41-4146-93f7-bb91e6bcaa99.png",
+                    "path": "cms/category/aadd7e7e-ee41-4146-93f7-bb91e6bcaa99.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "9894534f-e235-4390-817d-680520c515a8",
+                    "mediaType": "IMAGE",
+                    "name": "aadd7e7e-ee41-4146-93f7-bb91e6bcaa99.png",
+                    "path": "cms/category/aadd7e7e-ee41-4146-93f7-bb91e6bcaa99.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "ac7b3ee1-98cb-48b8-8c62-27f47b4185a2",
+                  "imageWithName": {
+                    "height": 334,
+                    "id": "ae7335b3-e7dd-484d-b90d-11cf4e9a2a81",
+                    "mediaType": "IMAGE",
+                    "name": "b322b3db-e75e-45e5-a11d-7ee37561c426.png",
+                    "path": "cms/category/b322b3db-e75e-45e5-a11d-7ee37561c426.png",
+                    "width": 226
+                  },
+                  "imageWithNameV2": {
+                    "height": 334,
+                    "id": "ae7335b3-e7dd-484d-b90d-11cf4e9a2a81",
+                    "mediaType": "IMAGE",
+                    "name": "b322b3db-e75e-45e5-a11d-7ee37561c426.png",
+                    "path": "cms/category/b322b3db-e75e-45e5-a11d-7ee37561c426.png",
+                    "width": 226
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "817d24f9-21ae-47ff-a18f-784272242645",
+                    "b277ab99-54c7-49c3-ba41-273c19d8f0e2",
+                    "1763b292-ac65-40e4-89ab-d016e826389e",
+                    "de5dae7e-5321-4dcd-998d-3ccdc9d94587"
+                  ],
+                  "name": "Home Needs",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=13886&isLMSPIPEnabled=true",
+                  "enlargedImageV2": {
+                    "height": 436,
+                    "id": "0395110f-d143-462d-a1cd-dd3d7c168ba9",
+                    "mediaType": "IMAGE",
+                    "name": "de987a01-8eec-4d2c-b60c-139884758986.png",
+                    "path": "cms/category/de987a01-8eec-4d2c-b60c-139884758986.png",
+                    "width": 648
+                  },
+                  "enlargedImageV3": {
+                    "height": 436,
+                    "id": "0395110f-d143-462d-a1cd-dd3d7c168ba9",
+                    "mediaType": "IMAGE",
+                    "name": "de987a01-8eec-4d2c-b60c-139884758986.png",
+                    "path": "cms/category/de987a01-8eec-4d2c-b60c-139884758986.png",
+                    "width": 648
+                  },
+                  "highlightedText": {},
+                  "id": "2423aa03-4219-4cab-a84d-92019f967003",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "f011b753-2797-4cc5-900d-5b426e850120",
+                    "mediaType": "IMAGE",
+                    "name": "c42610fc-a94c-40f6-9e74-d30c4a1f5895.png",
+                    "path": "cms/category/c42610fc-a94c-40f6-9e74-d30c4a1f5895.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "f011b753-2797-4cc5-900d-5b426e850120",
+                    "mediaType": "IMAGE",
+                    "name": "c42610fc-a94c-40f6-9e74-d30c4a1f5895.png",
+                    "path": "cms/category/c42610fc-a94c-40f6-9e74-d30c4a1f5895.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "09cc7b3c-57d6-4efe-8abc-5e0491f720c8",
+                    "eff6ca4f-97f1-43ed-b32e-5253cad99688",
+                    "0536bfbe-380d-4413-bd10-087466e65614"
+                  ],
+                  "name": "Kitchen & Dining",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=1a7e46a8-e627-450f-8960-490b550eeee6&subCategoryId=3b8d9db5-1953-4593-b4ce-8593f6fbd67a&isUnlisted=true",
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "a7fe4079-5b0f-41cf-aec9-297b9ce3e742",
+                    "mediaType": "IMAGE",
+                    "name": "07235a3f-c687-467b-b38f-449b47811bde.png",
+                    "path": "cms/category/07235a3f-c687-467b-b38f-449b47811bde.png",
+                    "width": 648
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "a7fe4079-5b0f-41cf-aec9-297b9ce3e742",
+                    "mediaType": "IMAGE",
+                    "name": "07235a3f-c687-467b-b38f-449b47811bde.png",
+                    "path": "cms/category/07235a3f-c687-467b-b38f-449b47811bde.png",
+                    "width": 648
+                  },
+                  "highlightedText": {},
+                  "id": "1a7e46a8-e627-450f-8960-490b550eeee6",
+                  "imageWithName": {
+                    "height": 334,
+                    "id": "35ad001b-a613-4c72-bccc-f78c1d217f0f",
+                    "mediaType": "IMAGE",
+                    "name": "acfa1279-d46b-408c-8f74-6fcd71bd89f9.png",
+                    "path": "cms/category/acfa1279-d46b-408c-8f74-6fcd71bd89f9.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 334,
+                    "id": "35ad001b-a613-4c72-bccc-f78c1d217f0f",
+                    "mediaType": "IMAGE",
+                    "name": "acfa1279-d46b-408c-8f74-6fcd71bd89f9.png",
+                    "path": "cms/category/acfa1279-d46b-408c-8f74-6fcd71bd89f9.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "4f491a4a-6bf9-4404-a8b2-e279597ac8cf"
+                  ],
+                  "name": "Cleaning Essentials",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=14025&isLMSPIPEnabled=true",
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "f2b29f3d-eefa-4039-9f33-9e45ed4cf7fb",
+                    "mediaType": "IMAGE",
+                    "name": "20ce3250-2148-40e1-ab3f-d6355ac824a7.png",
+                    "path": "cms/category/20ce3250-2148-40e1-ab3f-d6355ac824a7.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "f2b29f3d-eefa-4039-9f33-9e45ed4cf7fb",
+                    "mediaType": "IMAGE",
+                    "name": "20ce3250-2148-40e1-ab3f-d6355ac824a7.png",
+                    "path": "cms/category/20ce3250-2148-40e1-ab3f-d6355ac824a7.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "966dc8a0-8f21-420e-a897-8dd70b4228f6",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "b98d1d96-0fbe-4acd-ac87-f4eba4caa187",
+                    "mediaType": "IMAGE",
+                    "name": "c084c75c-82ca-497f-857c-5069c6723194.png",
+                    "path": "cms/category/c084c75c-82ca-497f-857c-5069c6723194.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "b98d1d96-0fbe-4acd-ac87-f4eba4caa187",
+                    "mediaType": "IMAGE",
+                    "name": "c084c75c-82ca-497f-857c-5069c6723194.png",
+                    "path": "cms/category/c084c75c-82ca-497f-857c-5069c6723194.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "71a2bb22-834e-4ab3-bc60-7e6a32d2d076",
+                    "88201eac-25b5-476a-bd07-0bd1f3d5d840",
+                    "a44d5a65-8e55-425b-8e43-b581bae21137",
+                    "5bdb29fe-b870-4b05-b6c4-93eca4515287"
+                  ],
+                  "name": "Electronics & Appliances",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=13831a81-e0d5-4939-9650-df2413e7aead&subCategoryId=8f39b80f-2682-4038-befa-c0001465647d&isUnlisted=true",
+                  "enlargedImage": {
+                    "height": 333,
+                    "id": "9b33b6b3-7f9f-43fd-8fde-23c61232117d",
+                    "mediaType": "IMAGE",
+                    "name": "Pet.png",
+                    "path": "cms/category/Pet.png",
+                    "width": 486
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "cc5ab4a5-e2a1-41db-8ab8-d70798918171",
+                    "mediaType": "IMAGE",
+                    "name": "c582d517-9af5-4636-b270-99df278bfa6f.png",
+                    "path": "cms/category/c582d517-9af5-4636-b270-99df278bfa6f.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "cc5ab4a5-e2a1-41db-8ab8-d70798918171",
+                    "mediaType": "IMAGE",
+                    "name": "c582d517-9af5-4636-b270-99df278bfa6f.png",
+                    "path": "cms/category/c582d517-9af5-4636-b270-99df278bfa6f.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "13831a81-e0d5-4939-9650-df2413e7aead",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "3cb682a2-4f1b-476e-8892-b9423b15b63e",
+                    "mediaType": "IMAGE",
+                    "name": "e6336a1b-eead-42d5-9c4d-23e22e3ebf2d.png",
+                    "path": "cms/category/e6336a1b-eead-42d5-9c4d-23e22e3ebf2d.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "3cb682a2-4f1b-476e-8892-b9423b15b63e",
+                    "mediaType": "IMAGE",
+                    "name": "e6336a1b-eead-42d5-9c4d-23e22e3ebf2d.png",
+                    "path": "cms/category/e6336a1b-eead-42d5-9c4d-23e22e3ebf2d.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "ea9c8bae-a752-4421-aea9-f331d761393f"
+                  ],
+                  "name": "Pet Care",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=11911&isLMSPIPEnabled=true",
+                  "enlargedImage": {
+                    "height": 333,
+                    "id": "ed6c2089-0c2f-4367-923b-a08d68bab3c2",
+                    "mediaType": "IMAGE",
+                    "name": "83564e94-a752-43e3-a450-3a648e507b49.png",
+                    "path": "cms/category/83564e94-a752-43e3-a450-3a648e507b49.png",
+                    "width": 486
+                  },
+                  "enlargedImageV2": {
+                    "height": 333,
+                    "id": "cd9b0a84-2af8-4c88-8a81-0aa8b02d2a78",
+                    "mediaType": "IMAGE",
+                    "name": "5925d67d-52fd-42c1-818e-aa0ea2f1c8b4.png",
+                    "path": "cms/category/5925d67d-52fd-42c1-818e-aa0ea2f1c8b4.png",
+                    "width": 486
+                  },
+                  "enlargedImageV3": {
+                    "height": 333,
+                    "id": "cd9b0a84-2af8-4c88-8a81-0aa8b02d2a78",
+                    "mediaType": "IMAGE",
+                    "name": "5925d67d-52fd-42c1-818e-aa0ea2f1c8b4.png",
+                    "path": "cms/category/5925d67d-52fd-42c1-818e-aa0ea2f1c8b4.png",
+                    "width": 486
+                  },
+                  "highlightedText": {},
+                  "id": "fd1438dc-e1a8-49f9-87a3-2645a613ceeb",
+                  "imageWithName": {
+                    "height": 334,
+                    "id": "a3bb7d94-180a-42a2-96ec-a64871b72da0",
+                    "mediaType": "IMAGE",
+                    "name": "8d4fb022-bae0-432d-92c8-2b12d97ee6cc.png",
+                    "path": "cms/category/8d4fb022-bae0-432d-92c8-2b12d97ee6cc.png",
+                    "width": 226
+                  },
+                  "imageWithNameV2": {
+                    "height": 334,
+                    "id": "a3bb7d94-180a-42a2-96ec-a64871b72da0",
+                    "mediaType": "IMAGE",
+                    "name": "8d4fb022-bae0-432d-92c8-2b12d97ee6cc.png",
+                    "path": "cms/category/8d4fb022-bae0-432d-92c8-2b12d97ee6cc.png",
+                    "width": 226
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "11404261-cd04-44d8-b657-1232d353a40c"
+                  ],
+                  "name": "Toys & Sports",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": " https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=34366&isLMSPIPEnabled=true",
+                  "enlargedImageV2": {
+                    "height": 444,
+                    "id": "1467d0d4-c5ac-4a5d-b8c5-6b4aefc52bc4",
+                    "mediaType": "IMAGE",
+                    "name": "58831b0d-7f0a-41b8-ba71-18155be989d9.png",
+                    "path": "cms/category/58831b0d-7f0a-41b8-ba71-18155be989d9.png",
+                    "width": 648
+                  },
+                  "enlargedImageV3": {
+                    "height": 444,
+                    "id": "1467d0d4-c5ac-4a5d-b8c5-6b4aefc52bc4",
+                    "mediaType": "IMAGE",
+                    "name": "58831b0d-7f0a-41b8-ba71-18155be989d9.png",
+                    "path": "cms/category/58831b0d-7f0a-41b8-ba71-18155be989d9.png",
+                    "width": 648
+                  },
+                  "highlightedText": {},
+                  "id": "0d74209d-c2e4-431b-98e0-c00a92766773",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "44f4e3da-7d47-47eb-a265-aedec4901f64",
+                    "mediaType": "IMAGE",
+                    "name": "b5cfc944-9611-4f08-b4f9-a071d07b1aad.png",
+                    "path": "cms/category/b5cfc944-9611-4f08-b4f9-a071d07b1aad.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "44f4e3da-7d47-47eb-a265-aedec4901f64",
+                    "mediaType": "IMAGE",
+                    "name": "b5cfc944-9611-4f08-b4f9-a071d07b1aad.png",
+                    "path": "cms/category/b5cfc944-9611-4f08-b4f9-a071d07b1aad.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "d191ed17-7a0a-46a2-b045-705c425f2484"
+                  ],
+                  "name": "Stationery & Books",
+                  "priority": 1,
+                  "unlisted": false
+                },
+                {
+                  "deeplinkUrl": "https://www.zeptonow.com/Categories?categoryId=cd50825e-baf8-47fe-9abc-ed9556122a9a&subCategoryId=5ce06b88-4e4e-4625-9fa0-0793aac0e50e&isUnlisted=true",
+                  "highlightedText": {},
+                  "id": "cd50825e-baf8-47fe-9abc-ed9556122a9a",
+                  "imageWithName": {
+                    "height": 333,
+                    "id": "55552324-b310-4737-86f0-2627df70a7aa",
+                    "mediaType": "IMAGE",
+                    "name": "6d26710a-1dd8-4d53-9884-33bbaebc4bf4.png",
+                    "path": "cms/category/6d26710a-1dd8-4d53-9884-33bbaebc4bf4.png",
+                    "width": 225
+                  },
+                  "imageWithNameV2": {
+                    "height": 333,
+                    "id": "55552324-b310-4737-86f0-2627df70a7aa",
+                    "mediaType": "IMAGE",
+                    "name": "6d26710a-1dd8-4d53-9884-33bbaebc4bf4.png",
+                    "path": "cms/category/6d26710a-1dd8-4d53-9884-33bbaebc4bf4.png",
+                    "width": 225
+                  },
+                  "isActive": true,
+                  "isEnlarged": false,
+                  "isEnlargedV2": false,
+                  "merchIds": [
+                    "584ae73b-cc9d-495d-8fea-83e12ca30ba1"
+                  ],
+                  "name": "Paan Corner",
+                  "priority": 1,
+                  "showTobaccoConsentPopup": true,
+                  "unlisted": false
+                }
+              ]
+            },
+            "experiments": {},
+            "order": 70,
+            "viewMeta": {
+              "background": {},
+              "border": {
+                "bottomLeftRadius": 0,
+                "bottomRightRadius": 0,
+                "color": "#FFFFFF",
+                "radius": 0,
+                "topLeftRadius": 0,
+                "topRightRadius": 0,
+                "width": 0
+              },
+              "divider": {},
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "spacerHeight": 52,
+              "timer": {}
+            },
+            "widgetFooter": {
+              "ctaButton": {},
+              "viewMeta": {
+                "padding": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            },
+            "widgetHeader": {
+              "rightCta": {
+                "actionId": "68da0029-ac47-4182-9842-65ff4abc0e4c",
+                "actionType": "DEEPLINK_NAVIGATION"
+              },
+              "viewMeta": {
+                "background": {},
+                "infoTextProps": {},
+                "padding": [
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "subtitleProps": {},
+                "titleProps": {}
+              }
+            },
+            "widgetId": 42836,
+            "widgetMeta": {
+              "footerInfo": null,
+              "headerInfo": null,
+              "minimumItemsRequired": 1,
+              "tagsScaleFactor": null
+            },
+            "widgetName": "ALL_CAT_LIST_DESKTOP_1",
+            "widgetType": "ALL_CATEGORIES_LIST_V1"
+          }
+        ]
+      },
+      "unserviceableDetails": null,
+      "externalVendorServiceabilityInfo": {
+        "activeIconUrl": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/6f594321-a11d-4345-a748-7e910cfdad38-Offer_Copy_png.png",
+        "activeIconUrlV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/5ca11e2b-5093-4d12-a21f-7f62f474b534-Offer_filled_SVG.svg",
+        "activeLottie": "https://prod-zepto-public-assets.s3.ap-south-1.amazonaws.com/inventory/banner/85c2f6c1-b1f6-4c18-b54d-213ed0b2aa35-DealStorewithchanges.lottie",
+        "activeLottieInLoop": true,
+        "domainUrl": "https://www.zeptonow.com/LayoutEngine?pageId=PAGE_IN_PAGE&layoutId=5752&title=Deal%20Store",
+        "iconUrl": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/6f594321-a11d-4345-a748-7e910cfdad38-Offer_Copy_png.png",
+        "inactiveIconUrl": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/67bf6bce-79af-48f3-8c69-093c0caca282-Offer.png",
+        "inactiveIconUrlV2": "https://ik.imagekit.io/jupdt2k6txi/inventory/banner/9537f897-0670-4929-a64f-d25f9bac69af-Offer_Unfilled_SVG.svg",
+        "inactiveLottie": "https://prod-zepto-public-assets.s3.ap-south-1.amazonaws.com/inventory/banner/85c2f6c1-b1f6-4c18-b54d-213ed0b2aa35-DealStorewithchanges.lottie",
+        "inactiveLottieInLoop": true,
+        "isServiceable": true,
+        "label": "Deal Store",
+        "vendorName": "Deal store"
+      },
+      "festivalUITheme": "NOTHEME",
+      "showUpdateAppModel": false,
+      "datasource": "LS",
+      "passDetails": {},
+      "showWalletIconOnHeader": true,
+      "lastWidgetId": "42836",
+      "userDetails": {
+        "fingerprintEnabled": false,
+        "fingerprintKey": "fingerprint_visitor_id"
+      },
+      "nextPageParams": {
+        "is_continuous_feed": false,
+        "last_widget_id": 42836,
+        "page_number": 1
+      },
+      "showUpdateAppModal": false,
+      "storeServiceableResponseV2": [
+        {
+          "serviceable": true,
+          "storeId": "b4dc8d65-ed2e-4142-81b6-373982b13500",
+          "storeConstruct": "PRIMARY_STORE",
+          "isNightlyStore": false
+        },
+        {
+          "serviceable": true,
+          "storeId": "0059ff6a-7eb0-477a-a7f5-69256f2c444b",
+          "storeConstruct": "SECONDARY_STORE",
+          "isNightlyStore": false
+        }
+      ],
+      "isEntryPageEnabled": false,
+      "marketplaceType": "SUPER_SAVER",
+      "lmsEnabled": true,
+      "topNavBadge": null,
+      "isPdpV2Enabled": true,
+      "showBacchatInAppNudges": true,
+      "storeDetailsResponse": null,
+      "isCafeLive": false,
+      "preloadDeeplinks": [],
+      "compressedDebugInfo": "AgR7fQ==",
+      "storeServiceableInfo": {
+        "storeServiceabilityView": {
+          "0059ff6a-7eb0-477a-a7f5-69256f2c444b": {
+            "deliverableSubtype": "ETA_NORMAL",
+            "etaInMinutes": 13,
+            "isDeliverable": true,
+            "isNightlyStore": false,
+            "serviceable": true,
+            "storeConstruct": "SECONDARY_STORE"
+          },
+          "93891814-819c-4e05-95a9-48ba1696f039": {
+            "isNightlyStore": false,
+            "serviceable": true,
+            "storeConstruct": "TERTIARY_STORE"
+          },
+          "b4dc8d65-ed2e-4142-81b6-373982b13500": {
+            "deliverableSubtype": "ETA_NORMAL_WITH_FULL_DELIVERY",
+            "etaInMinutes": 4,
+            "isDeliverable": true,
+            "isNightlyStore": false,
+            "serviceable": true,
+            "storeConstruct": "PRIMARY_STORE"
+          }
+        }
+      },
+      "eligibleMarketplaces": [],
+      "defaultMarketplace": "ZEPTO_NOW"
+    }
+  }
+]
