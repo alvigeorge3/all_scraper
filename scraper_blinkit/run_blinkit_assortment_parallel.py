@@ -119,19 +119,26 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
         await scraper.stop()
         logger.info(f"Worker {name} retired.")
 
-async def main():
-    if not os.path.exists(INPUT_FILE):
-        logger.error(f"Input file {INPUT_FILE} not found.")
-        return
+
+async def run_scraping(input_file="pin_codes.xlsx", max_workers=6):
+    """
+    Main entry point for scraping. 
+    Returns the path to the output CSV file if successful, else None.
+    """
+    if not os.path.exists(input_file):
+        logger.error(f"Input file {input_file} not found.")
+        return None
+
+    output_file = f"blinkit_assortment_parallel_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 
     # 1. Read Inputs
     try:
-        df = pd.read_excel(INPUT_FILE)
+        df = pd.read_excel(input_file)
         # Handle 'Pincode' or 'pincode' case insensitive
         col = next((c for c in df.columns if c.lower() == 'pincode'), None)
         if not col:
             logger.error("Input file must have 'Pincode' column")
-            return
+            return None
             
         raw_pincodes = df[col].dropna().astype(str).tolist()
         pincodes = []
@@ -144,10 +151,10 @@ async def main():
                     pincodes.append(clean_p)
         
         pincodes = sorted(list(set(pincodes)))
-        logger.info(f"Loaded {len(pincodes)} unique pincodes.")
+        logger.info(f"Loaded {len(pincodes)} unique pincodes: {pincodes}")
     except Exception as e:
         logger.error(f"Failed to read input: {e}")
-        return
+        return None
 
     import time
     start_time = time.time()
@@ -160,13 +167,15 @@ async def main():
         pin_queue.put_nowait(p)
 
     # 3. Launch Writer
-    writer = asyncio.create_task(writer_task(result_queue, OUTPUT_FILE))
+    writer = asyncio.create_task(writer_task(result_queue, output_file))
 
     # 4. Launch Workers
     workers = []
     # If list is small, don't spin up too many workers
-    actual_workers = min(MAX_WORKERS, len(pincodes))
+    actual_workers = min(max_workers, len(pincodes))
     
+    logger.info(f"Starting scraping with {actual_workers} workers...")
+
     for i in range(actual_workers):
         w = asyncio.create_task(worker(f"W-{i+1}", pin_queue, result_queue))
         workers.append(w)
@@ -183,7 +192,7 @@ async def main():
     duration_seconds = end_time - start_time
     duration_minutes = duration_seconds / 60
     
-    logger.info(f"All done! Output saved to: {OUTPUT_FILE}")
+    logger.info(f"All done! Output saved to: {output_file}")
     
     # --- Performance Reporting ---
     try:
@@ -204,7 +213,7 @@ async def main():
                 f"{duration_minutes:.2f}",
                 f"{duration_seconds / len(pincodes) if pincodes else 0:.2f}",
                 f"{total_products / duration_minutes if duration_minutes > 0 else 0:.2f}",
-                OUTPUT_FILE
+                output_file
             ]
         }
         
@@ -216,5 +225,9 @@ async def main():
     except Exception as e:
         logger.error(f"Failed to save performance report: {e}")
 
+    return output_file
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    # For backward compatibility
+    asyncio.run(run_scraping(INPUT_FILE, MAX_WORKERS))
+

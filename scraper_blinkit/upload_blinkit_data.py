@@ -47,33 +47,33 @@ def clean_csv_keys(row: dict) -> dict:
     
     return {k: v for k, v in cleaned.items() if k in allowed_cols}
 
-def main():
-    parser = argparse.ArgumentParser(description="Upload Blinkit CSV Data to Supabase")
-    parser.add_argument("file", type=str, help="Path to the CSV file to upload")
-    parser.add_argument("--table", type=str, default="blinkit_products", help="Target Supabase table name")
-    args = parser.parse_args()
 
-    if not os.path.exists(args.file):
-        logger.error(f"File {args.file} does not exist.")
-        return
+def process_upload(file_path: str, table_name: str = "blinkit_products") -> bool:
+    """
+    Reads a CSV file and uploads it to Supabase.
+    Returns True if fully successful (or partially successful), False if fatal error.
+    """
+    if not os.path.exists(file_path):
+        logger.error(f"File {file_path} does not exist.")
+        return False
 
     db = Database()
     if not db.client:
         logger.error("Database connection failed. Check .env file.")
-        return
+        return False
 
     records = []
-    logger.info(f"Reading {args.file}...")
+    logger.info(f"Reading {file_path}...")
     
     try:
-        with open(args.file, 'r', encoding='utf-8') as f:
+        with open(file_path, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 records.append(clean_csv_keys(row))
                 
         if not records:
             logger.warning("No records found in CSV.")
-            return
+            return True # Not an error, just empty
 
         # Upload in batches of 100
         batch_size = 100
@@ -83,16 +83,27 @@ def main():
         
         for i in range(total_batches):
             batch = records[i*batch_size : (i+1)*batch_size]
-            success = db.save_products(batch, table_name=args.table)
+            success = db.save_products(batch, table_name=table_name)
             if success:
                 logger.info(f"Batch {i+1}/{total_batches} uploaded.")
             else:
                 logger.error(f"Batch {i+1}/{total_batches} failed.")
                 
         logger.info("Upload process completed.")
+        return True
         
     except Exception as e:
         logger.error(f"Error processing file: {e}")
+        return False
+
+def main():
+    parser = argparse.ArgumentParser(description="Upload Blinkit CSV Data to Supabase")
+    parser.add_argument("file", type=str, help="Path to the CSV file to upload")
+    parser.add_argument("--table", type=str, default="blinkit_products", help="Target Supabase table name")
+    args = parser.parse_args()
+
+    process_upload(args.file, args.table)
 
 if __name__ == "__main__":
     main()
+
