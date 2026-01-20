@@ -13,12 +13,24 @@ import random
 import time
 
 class BaseScraper(ABC):
-    def __init__(self, headless=False):
+    def __init__(self, headless=False, proxy=None):
         self.headless = headless
+        self.proxy = proxy
         self.playwright = None
         self.browser = None
         self.context = None
         self.page = None
+        self.proxies_list = []
+        
+        # Load proxies from file
+        try:
+            with open("proxies.txt", "r") as f:
+                self.proxies_list = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+            logger.info(f"Loaded {len(self.proxies_list)} proxies from proxies.txt")
+        except FileNotFoundError:
+            logger.warning("proxies.txt not found. No proxy rotation available.")
+        except Exception as e:
+            logger.warning(f"Error loading proxies.txt: {e}")
 
     async def human_delay(self, min_seconds=1.0, max_seconds=3.0):
         """Random delay to simulate human reaction time."""
@@ -84,6 +96,13 @@ class BaseScraper(ABC):
         if not self.browser:
             raise Exception("Could not launch any browser (Chromium, Chrome, or Edge)")
 
+        await self._create_context_with_proxy()
+
+    async def _create_context_with_proxy(self):
+        """Creates a new browser context with a proxy (if available) and applies stealth."""
+        if self.context:
+            await self.context.close()
+
         # Rotate User Agents
         user_agents = [
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
@@ -94,20 +113,48 @@ class BaseScraper(ABC):
         ]
         chosen_ua = random.choice(user_agents)
         logger.info(f"Using User-Agent: {chosen_ua}")
+        
+        context_args = {
+            'viewport': {'width': 1920, 'height': 1080},
+            'user_agent': chosen_ua
+        }
+        
+        # Proxy Selection
+        selected_proxy = self.proxy
+        if not selected_proxy and self.proxies_list:
+            # Pick a regular proxy string
+            proxy_str = random.choice(self.proxies_list)
+            # Parse it for Playwright if needed, or pass as server
+            # Format expected by Playwright: { "server": "http://ip:port", "username": "...", "password": "..." }
+            # Simplified parsing: assuming standard http://user:pass@ip:port or http://ip:port
+            logger.info(f"Rotating to proxy: {proxy_str}")
+            
+            # Basic parsing logic
+            try:
+                import urllib.parse
+                parsed = urllib.parse.urlparse(proxy_str)
+                selected_proxy = {
+                    "server": f"{parsed.scheme}://{parsed.hostname}:{parsed.port}"
+                }
+                if parsed.username:
+                    selected_proxy["username"] = parsed.username
+                if parsed.password:
+                    selected_proxy["password"] = parsed.password
+            except Exception as e:
+                logger.error(f"Failed to parse proxy {proxy_str}: {e}")
+        
+        if selected_proxy:
+            logger.info(f"Using Proxy: {selected_proxy.get('server')}")
+            context_args['proxy'] = selected_proxy
 
-        self.context = await self.browser.new_context(
-             viewport={'width': 1920, 'height': 1080},
-             user_agent=chosen_ua
-        )
+        self.context = await self.browser.new_context(**context_args)
         
         # PERFORMANCE OPTIMIZATION: Block heavy resources
-        # We block images, media, and fonts.
-        # CRITICAL FIX: Do NOT block 'stylesheet' - modern anti-bots check for CSS loading/rendering.
         await self.context.route("**/*", lambda route: route.abort() 
             if route.request.resource_type in ["image", "media", "font"] 
             else route.continue_())
         
-        # KEY STEALTH SCRIPT: Remove navigator.webdriver and mask other properties
+        # KEY STEALTH SCRIPT
         await self.context.add_init_script("""
             // 1. Pass WebDriver test
             Object.defineProperty(navigator, 'webdriver', {
@@ -124,12 +171,17 @@ class BaseScraper(ABC):
                 get: () => ['en-US', 'en']
             });
             
-            // 4. Broken Image Handling (Optional, but good for headless)
-            // Some checks look for broken 0x0 images in headless
-            // script skipped for simplicity, focusing on properties.
+            # 4. Broken Image Handling (Optional, but good for headless)
+            # Some checks look for broken 0x0 images in headless
+            # script skipped for simplicity, focusing on properties.
         """)
         
         self.page = await self.context.new_page()
+
+    async def rotate_proxy(self):
+        """Public method to trigger proxy rotation."""
+        logger.info("🔄 Initiating Proxy Rotation...")
+        await self._create_context_with_proxy()
 
     async def stop(self):
         if self.context:

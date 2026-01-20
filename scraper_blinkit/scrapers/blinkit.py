@@ -12,8 +12,8 @@ from playwright.async_api import TimeoutError
 logger = logging.getLogger(__name__)
 
 class BlinkitScraper(BaseScraper):
-    def __init__(self, headless=False):
-        super().__init__(headless)
+    def __init__(self, headless=False, proxy=None):
+        super().__init__(headless, proxy)
         self.base_url = "https://blinkit.com/"
         self.delivery_eta = "N/A"
 
@@ -35,72 +35,93 @@ class BlinkitScraper(BaseScraper):
 
     async def set_location(self, pincode: str):
         logger.info(f"Setting location to {pincode}")
-        try:
-            await self.page.goto(self.base_url, timeout=60000, wait_until='domcontentloaded')
-            
-            # Check for blocking
-            content = await self.page.content()
-            if "Access Denied" in content or "403 Forbidden" in content:
-                logger.error("🛑 BLOCKED: Access Denied or 403 detected on homepage.")
-                return
 
-            # Humanize: Scroll a bit to look real
-            await self.human_scroll()
-
-            # 1. Trigger Location Modal
-            logger.info("Clicking location trigger...")
+        max_retries = 3
+        for attempt in range(max_retries):
             try:
-                # Random delay before clicking
-                await self.human_delay()
+                await self.page.goto(self.base_url, timeout=60000, wait_until='domcontentloaded')
                 
-                trigger_selector = "div[class*='LocationBar__']"
-                
-                # Check if we are already seeing the location bar
-                is_visible = False
+                # Check for blocking
+                content = await self.page.content()
+                if "Access Denied" in content or "403 Forbidden" in content:
+                    logger.error(f"🛑 BLOCKED: Access Denied or 403 detected on homepage (Attempt {attempt+1}/{max_retries}).")
+                    if attempt < max_retries - 1:
+                        await self.rotate_proxy()
+                        continue
+                    else:
+                        logger.error("🛑 Max retries reached with proxy rotation. Aborting.")
+                        return
+
+                # Humanize: Scroll a bit to look real
+                await self.human_scroll()
+
+                # 1. Trigger Location Modal
+                logger.info("Clicking location trigger...")
                 try:
-                     await self.page.wait_for_selector(trigger_selector, timeout=5000)
-                     is_visible = True
-                except: pass
-                
-                trigger_clicked = False
-                if is_visible:
-                    try:
-                        await self.page.hover(trigger_selector) 
-                        await self.human_delay(0.2, 0.5)
-                        await self.page.click(trigger_selector, force=True) 
-                        trigger_clicked = True
-                    except:
-                        # JS click fallback
-                        # Fix: Use double quotes for the outer JS string to avoid conflict with single quotes in selector
-                        await self.page.evaluate(f'document.querySelector("{trigger_selector}").click()')
-                        trigger_clicked = True
-
-                if not trigger_clicked:
-                    # Try text-based triggers
-                    for text_pattern in ["Delivery in", "Delivery to", "Location"]:
-                         if await self.page.is_visible(f"text={text_pattern}"):
-                             await self.page.click(f"text={text_pattern}", force=True)
-                             trigger_clicked = True
-                             break
+                    # Random delay before clicking
+                    await self.human_delay()
                     
+                    trigger_selector = "div[class*='LocationBar__']"
+                    
+                    # Check if we are already seeing the location bar
+                    is_visible = False
+                    try:
+                         await self.page.wait_for_selector(trigger_selector, timeout=5000)
+                         is_visible = True
+                    except: pass
+                    
+                    trigger_clicked = False
+                    if is_visible:
+                        try:
+                            await self.page.hover(trigger_selector) 
+                            await self.human_delay(0.2, 0.5)
+                            await self.page.click(trigger_selector, force=True) 
+                            trigger_clicked = True
+                        except:
+                            # JS click fallback
+                            # Fix: Use double quotes for the outer JS string to avoid conflict with single quotes in selector
+                            await self.page.evaluate(f'document.querySelector("{trigger_selector}").click()')
+                            trigger_clicked = True
+    
                     if not trigger_clicked:
-                        # Broad header click as last resort
-                        logger.warning("Precise location trigger not found, trying broad header click...")
-                        await self.page.click("header", force=True)
+                        # Try text-based triggers
+                        for text_pattern in ["Delivery in", "Delivery to", "Location"]:
+                             if await self.page.is_visible(f"text={text_pattern}"):
+                                 await self.page.click(f"text={text_pattern}", force=True)
+                                 trigger_clicked = True
+                                 break
+                        
+                        if not trigger_clicked:
+                            # Broad header click as last resort
+                            logger.warning("Precise location trigger not found, trying broad header click...")
+                            await self.page.click("header", force=True)
+                except Exception as e:
+                    logger.warning(f"Trigger click attempt failed: {e}")
+    
+                # Wait for modal with smart wait
+                modal_input = "input[name='search'], input[placeholder*='search']"
+                try:
+                    await self.page.wait_for_selector(modal_input, state="visible", timeout=10000)
+                except TimeoutError:
+                    logger.warning("Location modal not opened. Retrying trigger...")
+                    # Retry once
+                    await self.page.reload(wait_until='domcontentloaded')
+                    await self.human_delay()
+                    await self.page.click("div[class*='LocationBar__']", force=True)
+                    await self.page.wait_for_selector(modal_input, state="visible", timeout=10000)
+                
+                # If we successfully opened the modal, break the retry loop and proceed
+                break
+                
             except Exception as e:
-                logger.warning(f"Trigger click attempt failed: {e}")
-
-            # Wait for modal with smart wait
-            modal_input = "input[name='search'], input[placeholder*='search']"
-            try:
-                await self.page.wait_for_selector(modal_input, state="visible", timeout=10000)
-            except TimeoutError:
-                logger.warning("Location modal not opened. Retrying trigger...")
-                # Retry once
-                await self.page.reload(wait_until='domcontentloaded')
-                await self.human_delay()
-                await self.page.click("div[class*='LocationBar__']", force=True)
-                await self.page.wait_for_selector(modal_input, state="visible", timeout=10000)
+                logger.error(f"Error setting location (Attempt {attempt+1}): {e}")
+                if attempt < max_retries - 1:
+                     await self.rotate_proxy()
+                else:
+                    try:
+                        await self.page.screenshot(path="error_blinkit_location.png")
+                    except: pass
+                    return
 
             
             # 2. Type pincode naturally

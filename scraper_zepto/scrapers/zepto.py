@@ -18,6 +18,7 @@ class ZeptoScraper(BaseScraper):
         self.base_url = "https://www.zepto.com/"
         self.delivery_eta = "N/A"
         self.store_id = "N/A"
+        self.clicked_location_label = "N/A"
 
     async def set_location(self, pincode: str):
         logger.info(f"Setting location to {pincode}")
@@ -70,16 +71,45 @@ class ZeptoScraper(BaseScraper):
                     logger.info(f"Typed pincode: {pincode}")
                     
                     await self.human_delay()
-                    await self.page.keyboard.press("Enter")
-                    logger.info("Pressed Enter for location selection")
                     await self.human_delay()
+                    # await self.page.keyboard.press("Enter")
+                    # logger.info("Pressed Enter for location selection")
+                    # await self.human_delay()
 
-                    # Click first result if needed
+                    # Wait for results to appear
+                    try:
+                        await self.page.wait_for_selector("div[data-testid='location-search-item'], [data-testid='prediction-item'], div[class*='prediction'], div[class*='search-result']", timeout=5000)
+                    except: pass
+                    
+                    # Click first result
                     if await self.page.is_visible("input[type='text']"):
-                         results = await self.page.query_selector_all("div[data-testid='location-search-item'], h4, div[class*='prediction']")
-                         if results:
-                             await results[0].click(force=True)
-                             logger.info("Clicked first prediction result (force=True)")
+                        # specific selectors for location results
+                        results = await self.page.query_selector_all("div[data-testid='address-search-item'], [data-testid='location-search-item'], [data-testid='prediction-item']")
+                        if not results:
+                             results = await self.page.query_selector_all("div[class*='prediction'], div[class*='search-result']")
+                             
+                        if results:
+                            # Capture the text of the prediction before clicking
+                            try:
+                                text = await results[0].inner_text()
+                                # Clean up text (remove "Location" etc if needed)
+                                if text:
+                                    self.clicked_location_label = text.split('\n')[0].strip() # Take primary part
+                                    logger.info(f"Captured clicked label: {self.clicked_location_label}")
+                            except:
+                                logger.warning("Could not capture clicked label text")
+
+                            await results[0].click(force=True)
+                            logger.info("Clicked first prediction result (force=True)")
+                        else:
+                             # Fallback if no preds
+                             # content = await self.page.content()
+                             # with open("debug_location_results.html", "w", encoding="utf-8") as f:
+                             #    f.write(content)
+                             # logger.info("Dumped HTML to debug_location_results.html")
+                             
+                             await self.page.keyboard.press("Enter")
+                             logger.info("Fallback: Pressed Enter")
                 except Exception as e:
                      logger.error(f"Could not type pincode: {e}")
 
@@ -243,7 +273,7 @@ class ZeptoScraper(BaseScraper):
                     "shelf_life_in_hours": str(p_data.get("shelfLifeInHours", "N/A")),
                     "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
                     "pincode_input": pincode,
-                    "clicked_label": sub_name
+                    "clicked_label": self.clicked_location_label
                 }
             except:
                 return None
@@ -418,7 +448,7 @@ class ZeptoScraper(BaseScraper):
                                 "shelf_life_in_hours": shelf_life,
                                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
                                 "pincode_input": pincode,
-                                "clicked_label": sub_name
+                                "clicked_label": self.clicked_location_label
                             }
                             products.append(item)
                     except Exception as e:
@@ -511,7 +541,7 @@ class ZeptoScraper(BaseScraper):
                 "shelf_life_in_hours": "N/A",
                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
                 "pincode_input": pincode,
-                "clicked_label": "Direct Link"
+                "clicked_label": self.clicked_location_label,
             }
             products.append(item)
             
@@ -672,7 +702,7 @@ class ZeptoScraper(BaseScraper):
                     "shelf_life_in_hours": variant_info.get('shelfLifeInHours', "N/A"),
                     "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
                     "pincode_input": pincode,
-                    "clicked_label": sub_name
+                    "clicked_label": self.clicked_location_label
                 }
                 products.append(item)
             except Exception as e:

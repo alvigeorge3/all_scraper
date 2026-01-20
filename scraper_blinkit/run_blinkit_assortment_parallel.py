@@ -54,7 +54,7 @@ async def writer_task(queue: asyncio.Queue, filename: str):
             
     return total_count
 
-async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queue):
+async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queue, proxy=None):
     """
     Worker:
     1. Gets Pincode
@@ -62,7 +62,7 @@ async def worker(name: str, pin_queue: asyncio.Queue, result_queue: asyncio.Queu
     3. Pushes data to Result Queue
     """
     logger.info(f"Worker {name} starting...")
-    scraper = BlinkitScraper(headless=True)
+    scraper = BlinkitScraper(headless=True, proxy=proxy)
     
     try:
         await scraper.start()
