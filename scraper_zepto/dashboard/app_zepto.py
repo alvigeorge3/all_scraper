@@ -178,32 +178,16 @@ if category_filter:
     filtered_df = filtered_df[filtered_df['category'].isin(category_filter)]
 
 # Metrics
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 col1.metric("Total Products", len(filtered_df))
-avg_price = filtered_df['price'].mean() if 'price' in filtered_df.columns else 0
-col2.metric("Avg Price", f"₹{avg_price:.2f}")
 
 out_of_stock = len(filtered_df[filtered_df['availability'] == 'Out of Stock']) if 'availability' in filtered_df.columns else 0
-col3.metric("Out of Stock", out_of_stock, delta_color="inverse")
+col2.metric("Out of Stock", out_of_stock, delta_color="inverse")
 
 cat_count = filtered_df['category'].nunique() if 'category' in filtered_df.columns else 0
-col4.metric("Categories", cat_count)
+col3.metric("Categories", cat_count)
 
-# Charts
-st.subheader("📊 Analytics")
-c1, c2 = st.columns(2)
 
-with c1:
-    st.markdown("### Availability Status")
-    if 'availability' in filtered_df.columns:
-        fig_avail = px.pie(filtered_df, names='availability', title="In Stock vs Out of Stock", hole=0.4)
-        st.plotly_chart(fig_avail, use_container_width=True)
-
-with c2:
-    st.markdown("### Price Distribution")
-    if 'price' in filtered_df.columns:
-        fig_price = px.histogram(filtered_df, x='price', nbins=30, title="Price Distribution", color_discrete_sequence=['#9C27B0'])
-        st.plotly_chart(fig_price, use_container_width=True)
 
 # Data Grid
 st.subheader("📋 Raw Data Explorer")
@@ -211,4 +195,36 @@ search_term = st.text_input("Search Product Name", "")
 if search_term and 'name' in filtered_df.columns:
     filtered_df = filtered_df[filtered_df['name'].str.contains(search_term, case=False, na=False)]
 
-st.dataframe(filtered_df, width="stretch")
+# Select and Rename Columns for Client View
+client_view = filtered_df.copy()
+
+# Rename map based on Client Request
+# DB Column -> Client Column
+column_map = {
+    'category': 'Category',
+    'subcategory': 'Subcategory',
+    'name': 'Item Name',
+    'brand': 'Brand',
+    'mrp': 'Mrp',
+    'price': 'Price',
+    'pack_size': 'Weight/pack_size',
+    'eta': 'Delivery ETA',
+    'availability': 'availability',
+    'inventory': 'inventory',
+    'store_id': 'store_id',
+    'base_product_id': 'base_product_id',
+    'shelf_life_in_hours': 'shelf_life_in_hours',
+    'scraped_at': 'timestamp', 
+    'pincode_input': 'pincode_input',
+    'clicked_label': 'clicked_label'
+}
+
+# 1. Rename existing columns
+client_view = client_view.rename(columns=column_map)
+
+# 2. Keep only requested columns that exist
+requested_cols = list(column_map.values())
+final_cols = [c for c in requested_cols if c in client_view.columns]
+client_view = client_view[final_cols]
+
+st.dataframe(client_view, width="stretch")
