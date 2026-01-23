@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Environment Variables (Security Risk!)
+.env
+
+# Debug & Temporary Files
+debug_*
+inspect_*
+verify_*
+analyze_*
+poc_*
+flight_dump_*
+parse_*
+fetch_*
+*.log
+
+# Debug HTML/Images/JSON
+*.html
+*.png
+api_dump.json
+debug_*.json
+performance_metrics.json
+
+# Output Data (Generated files)
+*.csv
+zepto_products_*.csv
+zepto_assortment_*.csv
+zepto_performance_*.csv
+
+# Excel files - but keep input templates
+*.xlsx
+!pin_codes.xlsx
+!pin_codes_40.xlsx
+
+# OS Specific
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
